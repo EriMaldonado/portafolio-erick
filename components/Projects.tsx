@@ -1,88 +1,351 @@
 "use client";
-
-import React from "react";
-import Image from "next/image";
+import React, { useState, useRef } from "react";
+import ProjectCard from "./ProjectCard";
+import ProjectTag from "./ProjectTag";
+import { motion, useInView } from "framer-motion";
 import Link from "next/link";
-type Props = {};
+import Image from "next/image";
 
-function Projects({}: Props) {
-  return (
-    <>
-      <div className="py-14" id="projects">
-        <div className="max-w-screen-2xl mx-auto px-4 md:px-8">
-          <div className="max-w-7xl mx-auto text-center">
-            <h3 className="text-3xl font-semibold sm:text-4xl mb-8 mt-4">
-              Proyectos
-            </h3>
-            <p className="text-lg mt-3 text-justify pb-4">
-              Durante mi carrera he trabajado en diversos proyectos que me ha
-              permitido adquirir habilidades en diferentes areas del desarrollo
-              web. En está sección encontraras una selección de mis proyectos
-              cada uno con su propia historia y desafíos únicos.
-            </p>
+
+const projectsData = [
+  {
+    id: 1,
+    title: "Muebles Maldonado",
+    tag: ["All", "Web"],
+    content: (
+      <div className="w-full max-w-xs overflow-hidden bg-[#E7DAC5] rounded-sm shadow-lg dark:bg-gray-800">
+        <Image
+          className=" object-containt w-full h-48  "
+          src="/mueblesmaldonado.png"
+          alt="muebles 1"
+          width={600}
+          height={400}
+        />
+
+        <div className="py-1 text-center pb-2">
+          <div className="block pb-1 text-md font-bold text-gray-800 dark:text-white">
+          Maldonado Furniture
           </div>
 
-          <div
-            className="max-w-7xl mx-auto  
-        "
-          >
-            <section className="py-4 bg-red">
-              <div className="max-w-screen-xl mx-auto  gap-x-12 items-center justify-around overflow-hidden md:flex md:px-8">
-                <div className="flex-none space-y-5 px-2 sm:max-w-xl md:px-0 lg:max-w-xl">
-                  <h1 className="text-xl font-medium">Aplicacion Web</h1>
-                  <h2 className="text-3xl dark:text-[#2563EB] font-semibold md:text-5xl">
-                    Muebles Maldonado
-                  </h2>
-                  <p className="text-lg text-justify">
-                    Desarrollo web utilizando TypeScript y Next.js para el
-                    frontend, Tailwind , Shadcn.UI para la interfaz de usuario,
-                    Prisma como ORM para la capa de datos, y MongoDB base de
-                    datos.
-                  </p>
-                  <div className="items-center gap-x-3 space-y-3 sm:flex sm:space-y-0">
-                    <a
-                      href="http://mueblesmaldonado.vercel.app/ " target="_blank" 
-                      className="block py-2 px-4 text-center text-white font-medium bg-[#2563EB] duration-150 hover:bg-[#2563EB] rounded-sm shadow-lg hover:shadow-none"
-                    >
-                      Ver Demo
-                    </a>
-                    <a
-                      href="/ "
-                      className="flex items-center justify-center gap-x-2 py-2 px-4  hover:bg-gray-400 font-medium duration-150 active:bg-gray-100 border rounded-lg md:inline-flex"
-                    >
-                      Ver Repositorio
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        className="w-5 h-5"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-                <div className="flex-none mt-14 md:mt-0 md:max-w-xl sm:max-w-xl ">
-                  <Link href="http://mueblesmaldonado.vercel.app/ " target="_blank" >
-                  <img
-                    src="/mueblesmaldonado.png"
-                    className=" md:rounded-tl-[108px]"
-                    alt="muebles"
-                  />
-                  </Link>
-                  
-                </div>
-              </div>
-            </section>
+          <div className="flex justify-center flex-wrap gap-2 text-xs font-semibold max-w-xs">
+            {["Typescript", "Nextjs", "MongoDB", "React", "Tailwind", "Firebase"].map((tech, index) => (
+              <span
+                key={index}
+                className="flex items-center px-2 py-1 bg-gray-300 text-gray-700 rounded-md dark:bg-gray-700 dark:text-white"
+                style={{ fontSize: "0.7rem" }}
+              >
+                <Image
+                  src={`/${tech.toLowerCase()}.png`}
+                  width={20}
+                  height={20}
+                  alt="logo"
+                  className="mr-1"
+                />
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex gap-2 pt-2 text-sm justify-center ">
+            <Link href="https://mueblesmaldonado.vercel.app/" target="blanck">
+              <button className=" button-card rounded-sm transition duration-300 dark:text-white hover:bg-[#15326F] hover:text-white">
+                Web Site
+              </button>
+            </Link>
+            <Link href="/" target="blanck">
+              <button className="button-card rounded-sm transition duration-300 dark:text-white hover:bg-[#15326F] hover:text-white">
+                Github
+              </button>
+            </Link>
           </div>
         </div>
       </div>
-    </>
+    ),
+  },
+  {
+    id: 2,
+    title: "Electrocréditos el Ahorro",
+    tag: ["All", "Web"],
+    content: (
+      <div className="w-full max-w-xs overflow-hidden bg-[#E7DAC5] rounded-sm shadow-lg dark:bg-gray-800">
+        <Image
+          className=" object-containt w-full h-48  hover:op"
+          src="/electrocreditos.png"
+          alt="electrocredito"
+          width={600}
+          height={400}
+        />
+
+        <div className="py-1 text-center pb-2">
+          <div
+            className="block pb-1 text-md font-bold text-gray-800 dark:text-white"
+          >
+            Electrocredits Savings
+          </div>
+
+          <div className="flex justify-center flex-wrap gap-2 text-xs font-semibold max-w-xs">
+            {["Typescript", "Nextjs","Bootstrap", "Tailwind", "MongoDB", "React"].map((tech, index) => (
+              <span
+                key={index}
+                className="flex items-center px-2 py-1 bg-gray-300 text-gray-700 rounded-md dark:bg-gray-700 dark:text-white"
+                style={{ fontSize: "0.7rem" }}
+              >
+                <Image
+                  src={`/${tech.toLowerCase()}.png`}
+                  width={20}
+                  height={20}
+                  alt="logo"
+                  className="mr-1"
+                />
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex gap-2 pt-2 text-sm justify-center ">
+            <Link href="https://electrocreditoselahorro.com/" target="blanck">
+              <button className=" button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
+                Web Site
+              </button>
+            </Link>
+            <Link href="/" target="blanck">
+              <button className="button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
+                GitHub
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 3,
+    title: "Personal Portfolio",
+    tag: ["All", "Web"],
+    content: (
+      <div className="w-full max-w-xs overflow-hidden bg-[#E7DAC5] rounded-sm shadow-lg dark:bg-gray-800">
+        <Image
+          className=" object-cover w-full h-48  "
+          src="/portafolio.png"
+          alt="portfolio"
+          width={600}
+          height={400}
+        />
+
+        <div className="py-1 text-center pb-2">
+        <div
+            className="block pb-1 text-md font-bold text-gray-800 dark:text-white"
+          >
+            Personal Portfolio
+          </div>
+
+          <div className="flex justify-center flex-wrap gap-2 text-xs font-semibold max-w-xs">
+            {["Typescript", "Nextjs", "React", "Node","apis","Shadcn"].map((tech, index) => (
+              <span
+                key={index}
+                className="flex items-center px-2 py-1 bg-gray-300 text-gray-700 rounded-md dark:bg-gray-700 dark:text-white"
+                style={{ fontSize: "0.7rem" }}
+              >
+                <Image
+                  src={`/${tech.toLowerCase()}.png`}
+                  width={20}
+                  height={20}
+                  alt="logo"
+                  className="mr-1"
+                />
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex gap-2 pt-2 text-sm justify-center ">
+            <Link href="/" target="blanck">
+              <button className=" button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
+                Web Site
+              </button>
+            </Link>
+            <Link href="/" target="blanck">
+              <button className="button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
+                GitHub
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 4,
+    title: "Alura Geek",
+    tag: ["All", "Web"],
+    content: (
+      <div className="w-full max-w-xs overflow-hidden bg-[#E7DAC5] rounded-sm shadow-lg dark:bg-gray-800">
+        <Image
+          className=" object-containt w-full h-48  "
+          src="/alura.png"
+          alt="alura"
+          width={600}
+          height={400}
+        />
+
+        <div className="py-1 text-center pb-2">
+        <div
+            className="block pb-1 text-md font-bold text-gray-800 dark:text-white"
+          >
+            AluraGeek
+          </div>
+
+          <div className="flex justify-center flex-wrap gap-2 text-xs font-semibold max-w-xs">
+            {[ "React", "Javascript","CSS", "html5" ].map((tech, index) => (
+              <span
+                key={index}
+                className="flex items-center px-2 py-1 bg-gray-300 text-gray-700 rounded-md dark:bg-gray-700 dark:text-white"
+                style={{ fontSize: "0.7rem" }}
+              >
+                <Image
+                  src={`/${tech.toLowerCase()}.png`}
+                  width={20}
+                  height={20}
+                  alt="logo"
+                  className="mr-1"
+                />
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex gap-2 pt-2 text-sm justify-center ">
+            <Link href="https://erimaldonado.github.io/alura-geek/" target="blanck">
+              <button className=" button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
+                Web Site
+              </button>
+            </Link>
+            <Link href="https://github.com/EriMaldonado/alura-geek/tree/master" target="blanck">
+              <button className="button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
+                GitHub
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 5,
+    title: "Api Pixabay",
+    tag: ["All", "Web"],
+    content: (
+      <div className="w-full max-w-xs overflow-hidden bg-[#E7DAC5] rounded-sm shadow-lg dark:bg-gray-800">
+        <Image
+          className=" object-containt w-full h-48  "
+          src="/api-pixabay.png"
+          alt="alura"
+          width={600}
+          height={400}
+        />
+
+        <div className="py-1 text-center pb-2">
+        <div
+            className="block pb-1 text-md font-bold text-gray-800 dark:text-white"
+          >
+            Pixabay image search
+          </div>
+
+          <div className="flex justify-center flex-wrap gap-2 text-xs font-semibold max-w-xs">
+            {[ "React", "Javascript","node","apis","CSS"].map((tech, index) => (
+              <span
+                key={index}
+                className="flex items-center px-2 py-1 bg-gray-300 text-gray-700 rounded-md dark:bg-gray-700 dark:text-white"
+                style={{ fontSize: "0.7rem" }}
+              >
+                <Image
+                  src={`/${tech.toLowerCase()}.png`}
+                  width={20}
+                  height={20}
+                  alt="logo"
+                  className="mr-1"
+                />
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex gap-2 pt-2 text-sm justify-center ">
+            <Link href="https://erimaldonado.github.io/api-pixabay/" target="blanck">
+              <button className=" button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
+                Web Site
+              </button>
+            </Link>
+            <Link href="https://github.com/EriMaldonado/api-pixabay/" target="blanck">
+              <button className="button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
+                GitHub
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+];
+
+const Projects = () => {
+  const [tag, setTag] = useState("All");
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  const handleTagChange = (newTag: React.SetStateAction<string>) => {
+    setTag(newTag);
+  };
+
+  const filteredProjects = projectsData.filter((project) =>
+    project.tag.includes(tag)
   );
-}
+
+  const cardVariants = {
+    initial: { y: 48, opacity: 0 },
+    animate: { y: 0, opacity: 1 },
+  };
+
+  return (
+    <section className=" bg-[#FFF5E6] dark:bg-[#121212]" id="projects">
+      <h2 className="pt-24 text-center text-3xl font-semibold   mb-4 md:mb-4">
+        My Projects
+      </h2>
+      <div className="  flex flex-row rounded-sm justify-center items-center gap-2 pb-2 ">
+        <ProjectTag
+          onClick={handleTagChange}
+          name="All"
+          isSelected={tag === "All"}
+        />
+        <ProjectTag
+          onClick={handleTagChange}
+          name="Web"
+          isSelected={tag === "Web"}
+        />
+        <ProjectTag
+          onClick={handleTagChange}
+          name="Mobile"
+          isSelected={tag === "Mobile"}
+        />
+      </div>
+      <ul
+        ref={ref}
+        className="max-w-5xl w-full p-8 gap-4 items-center justify-around flex-col sm:p-4  mx-auto my-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 "
+      >
+        {filteredProjects.map((project, index) => (
+          <motion.li
+            key={index}
+            variants={cardVariants}
+            initial="initial"
+            animate={isInView ? "animate" : "initial"}
+            transition={{ duration: 0.3, delay: index * 0.4 }}
+          >
+            <ProjectCard key={project.id} content={project.content} />
+          </motion.li>
+        ))}
+      </ul>
+    </section>
+  );
+};
 
 export default Projects;

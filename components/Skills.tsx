@@ -1,138 +1,523 @@
 "use client";
 
-import React from "react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import React, { useTransition, useState } from "react";
 import Image from "next/image";
+import TabButton from "./TabButton";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
-const Skills: React.FC = () => {
-  const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 5,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 3,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
+interface TabData {
+  title: string;
+  id: string;
+  content: React.ReactNode;
+}
+
+const TAB_DATA: TabData[] = [
+  {
+    title: "Skills",
+    id: "skills",
+    content: (
+      <div className=" grid grid-cols-1 md:grid-cols-1 gap-4">
+        <div className="gap-4 ">
+          <h1 className="text-[#15326F] pb-4 pr-8 font-bold dark:text-[#5872c5]">
+            Frontend
+          </h1>
+          <ul className="flex flex-wrap pb-6 gap-5">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/javascript.png"
+                    alt="javascript"
+                    className="p-1 "
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>JavaScript</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/typescript.png"
+                    alt="typescript"
+                    className="p-3"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>TypeScript</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/react.png"
+                    alt="react"
+                    className="p-3"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>React</TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/nextjs.png"
+                    alt="javascript"
+                    className="p-3"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Nextjs</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/python.png"
+                    alt="python"
+                    className="p-2"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Python</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/HTML5.png"
+                    alt="javascript"
+                    className="p-2"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>HTML5</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/tailwind.png"
+                    alt="tailwind"
+                    className="p-3"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Tailwind CSS</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/material.png"
+                    alt="material"
+                    className="p-3"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Material UI</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/bootstrap.png"
+                    alt="bootstrap"
+                    className="p-3"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Bootstrap</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/shadcn.png"
+                    alt="shadcn"
+                    className="p-3"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Shadcn UI</TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </ul>
+        </div>
+        <div className="gap-8 ">
+          <h1 className="text-[#15326F] pb-4 pr-8 font-bold dark:text-[#5872c5]">
+            Backend
+          </h1>
+          <ul className="flex flex-wrap pb-6">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/node.png"
+                    alt="node"
+                    className="p-1"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Nodejs</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/express.png"
+                    alt="express"
+                    className="p-3"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Express</TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/django.png"
+                    alt="django"
+                    className="p-2"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Django</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/mysql.png"
+                    alt="mysql"
+                    className="p-3"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>MySQL</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/mongodb.png"
+                    alt="mongodb"
+                    className="p-1"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>MongoDB</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/apis.png"
+                    alt="api"
+                    className="p-3"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>RESTful APIs</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/firebase.png"
+                    alt="figma"
+                    className="p-3"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Firebase</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/aws.png"
+                    alt="figma"
+                    className="p-3"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Amazon Web Services</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/gcp.png"
+                    alt="figma"
+                    className="p-3"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Google Cloud Platform</TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </ul>
+        </div>
+        <div className="gap-8 ">
+          <h1 className="text-[#15326F] pb-4 pr-8 font-bold dark:text-[#5872c5]">
+            Development Tools
+          </h1>
+          <ul className="flex flex-wrap pb-6">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/visual.png"
+                    alt="mysql"
+                    className="p-3"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Visual Studio Code</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/pycharm.png"
+                    alt="mysql"
+                    className="p-3"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Pycharm</TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/github.png"
+                    alt="figma"
+                    className="p-3"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>GitHub</TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/figma.png"
+                    alt="figma"
+                    className="p-2"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Figma</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Image
+                    src="/adobexd.png"
+                    alt="figma"
+                    className="p-1"
+                    width={80}
+                    height={80}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>AdobeXD</TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </ul>
+        </div>
+      </div>
+    ),
+  },
+
+  {
+    title: "Education",
+    id: "education",
+    content: (
+      <div className="  grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 pb-2">
+        <div className="w-full max-w-xs overflow-hidden bg-[#E7DAC5] rounded-sm shadow-lg dark:bg-gray-800">
+          <Image
+            className="object-cover w-full h-48"
+            src="/itin.png"
+            alt="avatar"
+            width={600}
+            height={400}
+          />
+
+          <div className="py-1 text-center">
+            <a
+              href="/#skills"
+              className="block text-md font-bold text-gray-800 dark:text-white"
+              role="link"
+            >
+              Information Technology{" "}
+            </a>
+            <span className="text-sm text-gray-700 dark:text-gray-200">
+              {" "}
+              2024 - ESPE{" "}
+            </span>
+          </div>
+        </div>
+
+        <div className="w-full max-w-xs overflow-hidden bg-[#E7DAC5] rounded-sm shadow-lg dark:bg-gray-800">
+          <Image
+            className="object-cover w-full h-48"
+            src="/frontend-g4.png"
+            alt="avatar"
+            width={600}
+            height={400}
+          />
+
+          <div className="py-1 text-center">
+            <a
+              href="/#skills"
+              className="block text-md font-bold text-gray-800 dark:text-white"
+              role="link"
+            >
+              Frontend Developer{" "}
+            </a>
+            <span className="text-sm text-gray-700 dark:text-gray-200">
+              {" "}
+              2023 - Oracle One-Alura Latam
+            </span>
+          </div>
+        </div>
+
+        <div className="w-full max-w-xs overflow-hidden bg-[#E7DAC5] rounded-sm shadow-lg dark:bg-gray-800">
+          <Image
+            className="object-cover w-full h-48"
+            src="/curso-python.png"
+            alt="avatar"
+            width={600}
+            height={400}
+
+/>
+
+          <div className="py-1 text-center">
+            <a
+              href="/#skills"
+              className="block text-md font-bold text-gray-800 dark:text-white"
+              role="link"
+            >
+              Python Professional Course{" "}
+            </a>
+            <span className="text-sm text-gray-700 dark:text-gray-200">
+              {" "}
+              2023 - Código Facilito{" "}
+            </span>
+          </div>
+        </div>
+
+        <div className="w-full max-w-xs overflow-hidden bg-[#E7DAC5] rounded-sm shadow-lg dark:bg-gray-800">
+          <Image
+            className="object-cover w-full h-48"
+            src="/machine-learning.png"
+            alt="avatar"
+            width={600}
+            height={400}
+          />
+
+          <div className="py-1 text-center">
+            <a
+              href="/#skills"
+              className="block text-md font-bold text-gray-800 dark:text-white"
+              role="link"
+            >
+              Machine Learning - Sklearn{" "}
+            </a>
+            <span className="text-sm text-gray-700 dark:text-gray-200">
+              {" "}
+              2023 - Alura Latam{" "}
+            </span>
+          </div>
+        </div>
+
+        <div className="w-full max-w-xs overflow-hidden bg-[#E7DAC5] rounded-sm shadow-lg dark:bg-gray-800">
+          <Image
+            className="object-cover w-full h-48"
+            src="/tecnologico.jpg"
+            alt="avatar"
+            width={600}
+            height={400}
+          />
+
+          <div className="py-1 text-center">
+            <a
+              href="/#skills"
+              className="block text-md font-bold text-gray-800 dark:text-white"
+              role="link"
+            >
+              Technologist in Business Administration
+            </a>
+            <span className="text-sm text-gray-700 dark:text-gray-200">
+              2019 - Tecnológico Pichincha
+            </span>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+];
+
+const AboutSection: React.FC = () => {
+  const [tab, setTab] = useState<string>("skills");
+  const [isPending, startTransition] = useTransition();
+
+  const handleTabChange = (id: string) => {
+    startTransition(() => {
+      setTab(id);
+    });
   };
 
   return (
-    <section className="" id="skills">
-      <div className="container flex flex-col justify-center">
-        <div className="">
-          <h2 className="text-3xl text-center p-8">Habilidades Técnicas</h2>
-          <p className="mt-6 mb-8 text-lg sm:mb-12 text-justify">
-            Soy un desarrollador web con experiencia en Javascript, Node.js,
-            React.js, Typescript, Python, HTML5, CSS, Tailwind, MySQL, SQL
-            Server y MongoDB. Mis habilidades incluyen el diseño con Figma y
-            Adobe Illustrator, así como el análisis de datos utilizando PowerBI.
-            Soy competente en Visual Studio Code, Prisma ORM y he trabajado en
-            entornos de colaboración como AWS, GCP y Oracle Cloud. Mi enfoque se
-            centra en la aplicación innovadora de tecnologías para resolver
-            problemas eficientemente.
-          </p>
-          <div className="w-full p-auto relative">
-            <Carousel
-              responsive={responsive}
-              infinite={true}
-              className="mt-8"
-              autoPlay={true}
-              autoPlaySpeed={2000}
-              showDots={false} // Ocultar los puntos indicadores
-              arrows={true} // Ocultar las flechas de navegación
-              itemClass="px-12" // Agregar espacio entre elementos
-            >
-              <div className="item flex flex-col items-center">
-                <Image
-                  src="/front.png"
-                  alt="front"
-                  width={60}
-                  height={60}
-                  className=" p-2"
-                />
-                <h5 className="mt-2 text-center">Front end</h5>
-              </div>
-              <div className="item">
-                <Image
-                  className=" p-2"
-                  src="/typescript.png"
-                  alt="typescript"
-                  width={60}
-                  height={60}
-                />
+    <section
+      className="  pt-16 flex bg-[#FFF5E6] dark:bg-[#121212] "
+      id="skills"
+    >
+      <div className="max-w-screen-4xl mx-auto md:px-4 items-center marker:grid grid-cols-1 gap-2  xl:gap-4 sm:py-8 xl:px-8 ">
+        <div className="col-span-1">
+          <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
+            <h2 className="text-3xl font-bold mb-4 text-center">
+              Technical Skills
+            </h2>
+          </div>
+        </div>
 
-                <h5>Typescript</h5>
-              </div>
-              <div className="item">
-                <Image
-                  className=" p-2"
-                  src="/nextjs.png"
-                  alt="nextjs"
-                  width={60}
-                  height={60}
-                />
-                <h5>Nextjs</h5>
-              </div>
-              <div className="item">
-                <Image
-                  className="p-2"
-                  src="/node.png"
-                  alt="node"
-                  width={60}
-                  height={60}
-                />
-                <h5>Nodejs</h5>
-              </div>
-              <div className="item">
-                <Image
-                  className=" p-2"
-                  src="/react.png"
-                  alt="react"
-                  width={60}
-                  height={60}
-                />
-                <h5>React</h5>
-              </div>
-              <div className="item">
-                <Image
-                  className="  p-2"
-                  src="/javascript.png"
-                  alt="javascript"
-                  width={60}
-                  height={60}
-                />
-                <h5>Javascript</h5>
-              </div>
-              <div className="item">
-                <Image
-                  className=" p-2"
-                  src="/mysql.png"
-                  alt="mysql"
-                  width={60}
-                  height={60}
-                />
-                <h5>MySQL</h5>
-              </div>
-              <div className="item">
-                <Image
-                  className=" p-2"
-                  src="/css.png"
-                  alt="css"
-                  width={60}
-                  height={60}
-                />
-                <h5>CSS</h5>
-              </div>
-            </Carousel>
+        <div className="col-span-1">
+          <div className="max-w-7xl gap-8 mx-auto text-center flex flex-row items-start">
+            <TabButton
+              selectTab={() => handleTabChange("skills")}
+              active={tab === "skills"}
+            >
+              Skills
+            </TabButton>
+            <TabButton
+              selectTab={() => handleTabChange("education")}
+              active={tab === "education"}
+            >
+              Education & Certifications
+            </TabButton>
+          </div>
+
+          <div className="mt-4">
+            {TAB_DATA.find((t) => t.id === tab)?.content}
           </div>
         </div>
       </div>
@@ -140,4 +525,4 @@ const Skills: React.FC = () => {
   );
 };
 
-export default Skills;
+export default AboutSection;

@@ -66,12 +66,49 @@
     }
   }
 
-  .skill-slider {
-    width: 90%;
-    margin: 0 auto;
+
+  .button-card {
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 1px solid ; 
+    
+    
+    cursor: pointer;
+  }
+  .button {
     position: relative;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 1px solid ; 
+    cursor: pointer;
   }
-  .skill-slider .item img {
-    width: 20%;
-    margin: 0 auto 18px auto;
+  
+  .button-text {
+    position: relative;
+    z-index: 2; 
   }
+  
+  .button-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #15326F; 
+    z-index: 1;
+    transition: width 0.3s ease;
+  }
+  
+  .button:hover .button-fill {
+    width: 100%;
+  }
+  
+  .button:hover .button-text {
+    color: white; 
+  }
+  
+
+
+  

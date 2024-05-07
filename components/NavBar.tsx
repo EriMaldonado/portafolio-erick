@@ -2,6 +2,9 @@
 
 import React, { useState } from "react";
 import ModeDark from "./ModeDark";
+import Image from "next/image";
+import { FaGithub } from "react-icons/fa";
+import Link from "next/link";
 
 interface NavBarItem {
   title: string;
@@ -12,19 +15,18 @@ const NavBar: React.FC = () => {
   const [state, setState] = useState(false);
 
   const NavBar: NavBarItem[] = [
-    { title: "Inicio", path: "/" },
-    { title: "Proyectos", path: "#projects" },
-    { title: "Habilidades", path: "#skills" },
-    { title: "Certificaciones", path: "#certifications" },
+    { title: "Home", path: "#home" },
+    { title: "Skills", path: "#skills" },
+    { title: "Projects", path: "#projects" },
   ];
 
   return (
-    <nav className="w-full border-b md:border-0 md:static">
-      <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
-        <div className="flex items-center justify-between py-3 md:py-3">
+    <nav className=" fixed  border-b w-full md:border-0  bg-[#e7dac5] dark:bg-[#121212]">
+      <div className="items-center px-3 max-w-screen-xl mx-auto md:flex md:px-8 ">
+        <div className="flex items-center justify-between py-2 md:py-2">
           <div className="md:hidden">
             <button
-              className=" outline-none p-2 rounded-md focus:border-gray-400 focus:border"
+              className=" outline-none p-1 rounded-md focus:border-gray-400 focus:border"
               onClick={() => setState(!state)}
             >
               {state ? (
@@ -58,20 +60,40 @@ const NavBar: React.FC = () => {
               )}
             </button>
           </div>
-          <a href="javascript:void(0)">
-            <img src="./logo.png" width={80} height={60} alt="logo" />
-          </a>
-          <div className="pl-4 md:hidden">
-            <ModeDark />
-          </div>
-
-          <div className={`md:hidden ${state ? "block" : "hidden"}`}>
+          <div className="flex justify-center items-center gap-x-4">
+            <Link href="/">
+              <Image
+                src="/Erick.png"
+                alt="image"
+                className="w-14 h-14 rounded-full object-containt"
+                width={14}
+                height={14}
+                style={{ pointerEvents: "none" }}
+              />
+            </Link>
             <a
-              href="javascript:void(0)"
-              className="py-3 px-4 text-white bg-[#767779] hover:bg-[#15326F] rounded-md shadow block mb-2"
+              href="https://drive.google.com/file/d/1vEOl_hcCPQwwGAWGsJVSnXgkNkbpOc3x/view"
+              target="_blank"
+              className="text-sm text-gray-900 hover:text-gray-900 dark:hover:text-white"
             >
-              Contacto
+              <div>
+                <span className="block dark:text-white font-bold">
+                  Erick Maldonado
+                </span>
+
+                <span className="block dark:text-gray-400 text-sm ">
+                  Frontend Developer
+                </span>
+              </div>
             </a>
+          </div>
+          <div className="pl-1 md:hidden flex items-center">
+            <ModeDark />
+            <div className="flex p-1 items-center ">
+              <div className="ml-2  cursor-pointer text-[#757575] hover:text-[#000000] ">
+                <FaGithub size={35} />
+              </div>
+            </div>
           </div>
         </div>
         <div
@@ -79,10 +101,13 @@ const NavBar: React.FC = () => {
             state ? "block" : "hidden"
           }`}
         >
-          <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+          <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0 ">
             {NavBar.map((item, idx) => (
-              <li key={idx} className={`text-semibold`}>
-                <a className="text-semibold" href={item.path}>
+              <li
+                key={idx}
+                className={`text-bold border-b-4 border-transparent  hover:border-[#15326F] dark:hover:border-[#ffffff]`}
+              >
+                <a className="font-bold" href={item.path}>
                   {item.title}
                 </a>
               </li>
@@ -91,14 +116,20 @@ const NavBar: React.FC = () => {
         </div>
 
         <div className="hidden md:inline-block">
-          <a
-            href="#contact"
-            className="py-3 px-4 text-white bg-[#15326F] hover:bg-[#767779] rounded-md shadow"
-          >
-            Contacto
-          </a>
+          <Link href="#contact">
+            <button
+              onMouseDown={(e) => e.preventDefault()}
+              className="button rounded-sm dark:text-white"
+            >
+              <span className="button-text  dark:text-white pl-4 pr-4">
+                Contact
+              </span>
+              <div className="button-fill"></div>
+            </button>
+          </Link>
         </div>
-        <div className="pl-4 md:block hidden">
+
+        <div className="pl-4 md:block hidden  ">
           <ModeDark />
         </div>
       </div>
