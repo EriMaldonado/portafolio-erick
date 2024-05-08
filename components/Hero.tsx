@@ -8,7 +8,7 @@ import Image from "next/image";
 function Hero() {
   const handleDownload = () => {
     window.open(
-      "https://drive.google.com/file/d/1vEOl_hcCPQwwGAWGsJVSnXgkNkbpOc3x/view?usp=sharing",
+      "https://drive.google.com/file/d/1lV947iYORpZk8hVBtUPVSFJQPfgh8WTt/view?usp=sharing",
       "_blank"
     );
   };
