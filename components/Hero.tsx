@@ -5,6 +5,7 @@ import { ImLinkedin2 } from "react-icons/im";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import Image from "next/image"; 
+import Link from "next/link";
 function Hero() {
   const handleDownload = () => {
     window.open(
@@ -15,7 +16,7 @@ function Hero() {
 
   return (
     <section id="home" className="pt-24  bg-[#FFF5E6] dark:bg-[#121212]">
-    <div className="max-w-5xl w-full flex flex-col  sm:p-4  mx-auto my-auto lg:flex-row lg:justify-around">
+    <div className="max-w-5xl p-3 w-full flex flex-col  sm:p-4  mx-auto my-auto lg:flex-row lg:justify-around">
       <div className="flex flex-col pt-32 pb-16 rounded-sm lg:max-w-lg xl:max-w-lg lg:text-left">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
@@ -68,12 +69,16 @@ function Hero() {
               <div className="button-fill"></div>
             </button>
             <div className="flex flex-col md:flex-row p-2 items-center">
+            <Link href="https://github.com/EriMaldonado" target="blank">
               <div className="ml-2 mr-2 cursor-pointer text-[#15326F] hover:text-[#000000] dark:hover:text-[#ffffff]">
                 <FaGithub size={36} />
               </div>
+              </Link>
+              <Link href="https://www.linkedin.com/in/erickmaldonado1" target="blank">
               <div className="mr-2 cursor-pointer text-[#15326F] hover:text-[#000000] dark:hover:text-[#ffffff]">
                 <ImLinkedin2 size={36} />
               </div>
+              </Link>
             </div>
           </div>
         </motion.div>

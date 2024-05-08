@@ -6,7 +6,6 @@ import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-
 const projectsData = [
   {
     id: 1,
@@ -24,11 +23,18 @@ const projectsData = [
 
         <div className="py-1 text-center pb-2">
           <div className="block pb-1 text-md font-bold text-gray-800 dark:text-white">
-          Maldonado Furniture
+            Maldonado Furniture
           </div>
 
           <div className="flex justify-center flex-wrap gap-2 text-xs font-semibold max-w-xs">
-            {["Typescript", "Nextjs", "MongoDB", "React", "Tailwind", "Firebase"].map((tech, index) => (
+            {[
+              "Typescript",
+              "Nextjs",
+              "MongoDB",
+              "React",
+              "Tailwind",
+              "Firebase",
+            ].map((tech, index) => (
               <span
                 key={index}
                 className="flex items-center px-2 py-1 bg-gray-300 text-gray-700 rounded-md dark:bg-gray-700 dark:text-white"
@@ -77,14 +83,19 @@ const projectsData = [
         />
 
         <div className="py-1 text-center pb-2">
-          <div
-            className="block pb-1 text-md font-bold text-gray-800 dark:text-white"
-          >
+          <div className="block pb-1 text-md font-bold text-gray-800 dark:text-white">
             Electrocredits Savings
           </div>
 
           <div className="flex justify-center flex-wrap gap-2 text-xs font-semibold max-w-xs">
-            {["Typescript", "Nextjs","Bootstrap", "Tailwind", "MongoDB", "React"].map((tech, index) => (
+            {[
+              "Typescript",
+              "Nextjs",
+              "Bootstrap",
+              "Tailwind",
+              "MongoDB",
+              "React",
+            ].map((tech, index) => (
               <span
                 key={index}
                 className="flex items-center px-2 py-1 bg-gray-300 text-gray-700 rounded-md dark:bg-gray-700 dark:text-white"
@@ -133,38 +144,41 @@ const projectsData = [
         />
 
         <div className="py-1 text-center pb-2">
-        <div
-            className="block pb-1 text-md font-bold text-gray-800 dark:text-white"
-          >
+          <div className="block pb-1 text-md font-bold text-gray-800 dark:text-white">
             Personal Portfolio
           </div>
 
           <div className="flex justify-center flex-wrap gap-2 text-xs font-semibold max-w-xs">
-            {["Typescript", "Nextjs", "React", "Node","apis","Shadcn"].map((tech, index) => (
-              <span
-                key={index}
-                className="flex items-center px-2 py-1 bg-gray-300 text-gray-700 rounded-md dark:bg-gray-700 dark:text-white"
-                style={{ fontSize: "0.7rem" }}
-              >
-                <Image
-                  src={`/${tech.toLowerCase()}.png`}
-                  width={20}
-                  height={20}
-                  alt="logo"
-                  className="mr-1"
-                />
-                {tech}
-              </span>
-            ))}
+            {["Typescript", "Nextjs", "React", "Node", "apis", "Shadcn"].map(
+              (tech, index) => (
+                <span
+                  key={index}
+                  className="flex items-center px-2 py-1 bg-gray-300 text-gray-700 rounded-md dark:bg-gray-700 dark:text-white"
+                  style={{ fontSize: "0.7rem" }}
+                >
+                  <Image
+                    src={`/${tech.toLowerCase()}.png`}
+                    width={20}
+                    height={20}
+                    alt="logo"
+                    className="mr-1"
+                  />
+                  {tech}
+                </span>
+              )
+            )}
           </div>
 
           <div className="flex gap-2 pt-2 text-sm justify-center ">
-            <Link href="/" target="blanck">
+            <Link href="https://erickmaldonado.vercel.app/" target="blanck">
               <button className=" button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
                 Web Site
               </button>
             </Link>
-            <Link href="/" target="blanck">
+            <Link
+              href="https://github.com/EriMaldonado/portafolio-erick"
+              target="blanck"
+            >
               <button className="button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
                 GitHub
               </button>
@@ -189,14 +203,12 @@ const projectsData = [
         />
 
         <div className="py-1 text-center pb-2">
-        <div
-            className="block pb-1 text-md font-bold text-gray-800 dark:text-white"
-          >
+          <div className="block pb-1 text-md font-bold text-gray-800 dark:text-white">
             AluraGeek
           </div>
 
           <div className="flex justify-center flex-wrap gap-2 text-xs font-semibold max-w-xs">
-            {[ "React", "Javascript","CSS", "html5" ].map((tech, index) => (
+            {["React", "Javascript", "CSS", "html5"].map((tech, index) => (
               <span
                 key={index}
                 className="flex items-center px-2 py-1 bg-gray-300 text-gray-700 rounded-md dark:bg-gray-700 dark:text-white"
@@ -215,12 +227,18 @@ const projectsData = [
           </div>
 
           <div className="flex gap-2 pt-2 text-sm justify-center ">
-            <Link href="https://erimaldonado.github.io/alura-geek/" target="blanck">
+            <Link
+              href="https://erimaldonado.github.io/alura-geek/"
+              target="blanck"
+            >
               <button className=" button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
                 Web Site
               </button>
             </Link>
-            <Link href="https://github.com/EriMaldonado/alura-geek/tree/master" target="blanck">
+            <Link
+              href="https://github.com/EriMaldonado/alura-geek/tree/master"
+              target="blanck"
+            >
               <button className="button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
                 GitHub
               </button>
@@ -245,38 +263,44 @@ const projectsData = [
         />
 
         <div className="py-1 text-center pb-2">
-        <div
-            className="block pb-1 text-md font-bold text-gray-800 dark:text-white"
-          >
+          <div className="block pb-1 text-md font-bold text-gray-800 dark:text-white">
             Pixabay image search
           </div>
 
           <div className="flex justify-center flex-wrap gap-2 text-xs font-semibold max-w-xs">
-            {[ "React", "Javascript","node","apis","CSS"].map((tech, index) => (
-              <span
-                key={index}
-                className="flex items-center px-2 py-1 bg-gray-300 text-gray-700 rounded-md dark:bg-gray-700 dark:text-white"
-                style={{ fontSize: "0.7rem" }}
-              >
-                <Image
-                  src={`/${tech.toLowerCase()}.png`}
-                  width={20}
-                  height={20}
-                  alt="logo"
-                  className="mr-1"
-                />
-                {tech}
-              </span>
-            ))}
+            {["React", "Javascript", "node", "apis", "CSS"].map(
+              (tech, index) => (
+                <span
+                  key={index}
+                  className="flex items-center px-2 py-1 bg-gray-300 text-gray-700 rounded-md dark:bg-gray-700 dark:text-white"
+                  style={{ fontSize: "0.7rem" }}
+                >
+                  <Image
+                    src={`/${tech.toLowerCase()}.png`}
+                    width={20}
+                    height={20}
+                    alt="logo"
+                    className="mr-1"
+                  />
+                  {tech}
+                </span>
+              )
+            )}
           </div>
 
           <div className="flex gap-2 pt-2 text-sm justify-center ">
-            <Link href="https://erimaldonado.github.io/api-pixabay/" target="blanck">
+            <Link
+              href="https://erimaldonado.github.io/api-pixabay/"
+              target="blanck"
+            >
               <button className=" button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
                 Web Site
               </button>
             </Link>
-            <Link href="https://github.com/EriMaldonado/api-pixabay/" target="blanck">
+            <Link
+              href="https://github.com/EriMaldonado/api-pixabay/"
+              target="blanck"
+            >
               <button className="button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
                 GitHub
               </button>
@@ -307,44 +331,33 @@ const Projects = () => {
   };
 
   return (
-    <section className=" bg-[#FFF5E6] dark:bg-[#121212]" id="projects">
-      <h2 className="pt-24 text-center text-3xl font-semibold   mb-4 md:mb-4">
-        My Projects
-      </h2>
-      <div className="  flex flex-row rounded-sm justify-center items-center gap-2 pb-2 ">
-        <ProjectTag
-          onClick={handleTagChange}
-          name="All"
-          isSelected={tag === "All"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Web"
-          isSelected={tag === "Web"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Mobile"
-          isSelected={tag === "Mobile"}
-        />
-      </div>
-      <ul
-        ref={ref}
-        className="max-w-5xl w-full p-8 gap-4 items-center justify-around flex-col sm:p-4  mx-auto my-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 "
+<section className="bg-[#FFF5E6] dark:bg-[#121212]" id="projects">
+  <h2 className="pt-24 text-center text-3xl font-semibold mb-4 md:mb-4">
+    My Projects
+  </h2>
+  <div className="flex flex-row rounded-sm justify-center items-center gap-2 pb-2">
+    <ProjectTag onClick={handleTagChange} name="All" isSelected={tag === "All"} />
+    <ProjectTag onClick={handleTagChange} name="Web" isSelected={tag === "Web"} />
+    <ProjectTag onClick={handleTagChange} name="Mobile" isSelected={tag === "Mobile"} />
+  </div>
+  <ul
+    ref={ref}
+    className="max-w-5xl w-full p-8 gap-4 items-center justify-around flex-col sm:p-4 sm:justify-center sm:text-center mx-auto my-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
+  >
+    {filteredProjects.map((project, index) => (
+      <motion.li
+        key={index}
+        variants={cardVariants}
+        initial="initial"
+        animate={isInView ? "animate" : "initial"}
+        transition={{ duration: 0.3, delay: index * 0.4 }}
       >
-        {filteredProjects.map((project, index) => (
-          <motion.li
-            key={index}
-            variants={cardVariants}
-            initial="initial"
-            animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.3, delay: index * 0.4 }}
-          >
-            <ProjectCard key={project.id} content={project.content} />
-          </motion.li>
-        ))}
-      </ul>
-    </section>
+        <ProjectCard key={project.id} content={project.content} />
+      </motion.li>
+    ))}
+  </ul>
+</section>
+
   );
 };
 

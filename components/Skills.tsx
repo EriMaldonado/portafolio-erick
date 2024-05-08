@@ -488,7 +488,7 @@ const AboutSection: React.FC = () => {
 
   return (
     <section
-      className="  pt-16 flex bg-[#FFF5E6] dark:bg-[#121212] "
+      className=" p-3  pt-16 flex bg-[#FFF5E6] dark:bg-[#121212] "
       id="skills"
     >
       <div className="max-w-screen-4xl mx-auto md:px-4 items-center marker:grid grid-cols-1 gap-2  xl:gap-4 sm:py-8 xl:px-8 ">

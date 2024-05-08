@@ -72,7 +72,7 @@ const NavBar: React.FC = () => {
               />
             </Link>
             <a
-              href="https://drive.google.com/file/d/1vEOl_hcCPQwwGAWGsJVSnXgkNkbpOc3x/view"
+              href="https://drive.google.com/file/d/1lV947iYORpZk8hVBtUPVSFJQPfgh8WTt/view?usp=sharing"
               target="_blank"
               className="text-sm text-gray-900 hover:text-gray-900 dark:hover:text-white"
             >
@@ -90,9 +90,12 @@ const NavBar: React.FC = () => {
           <div className="pl-1 md:hidden flex items-center">
             <ModeDark />
             <div className="flex p-1 items-center ">
+              <Link href="https://github.com/EriMaldonado" target="blank">
               <div className="ml-2  cursor-pointer text-[#757575] hover:text-[#000000] ">
                 <FaGithub size={35} />
               </div>
+              </Link>
+              
             </div>
           </div>
         </div>
