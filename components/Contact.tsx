@@ -135,14 +135,14 @@ function ContactSection() {
                 <p className="flex items-center mx-2">
                   <FaWhatsapp
                     size={30}
-                    className="text-[#15326F] transition-colors duration-300 hover:text-black"
+                    className="text-[#15326F] transition-colors duration-300 dark:text-gray-300 hover:text-black dark:hover:text-blue-400"
                   />
                   <span className="mx-2 text-gray-700 text-sm truncate w-72 dark:text-gray-400">
-                    (+593)969816247
+                    (+593) 969816247
                   </span>
                 </p>
               </div>
-              <div className="mt-4 w-80 md:mt-8">
+              <div className="mt-4 w-80 md:mt-8 ">
                 <div className="flex mt-4 -mx-1.5 items-center justify-center ">
                   <a
                     href="https://www.linkedin.com/in/erickmaldonado1"

@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
             © Copyright {currentYear}. Made in Ecuador with 💛  
           </p>
 
-          <div className="flex -mx-2">
+          <div className="flex -mx-2 pb-2 pt-2">
 
             <a
               href="https://www.linkedin.com/in/erickmaldonado1"

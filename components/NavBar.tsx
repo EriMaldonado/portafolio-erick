@@ -62,12 +62,12 @@ const NavBar: React.FC = () => {
           </div>
           <div className="flex justify-center items-center gap-x-4">
             <Link href="/">
-              <Image
+              <img
                 src="/Erick.png"
                 alt="image"
-                className="w-14 h-14 rounded-full object-containt"
-                width={14}
-                height={14}
+                className="w-14 h-14 rounded-full "
+                width={16}
+                height={16}
                 style={{ pointerEvents: "none" }}
               />
             </Link>
