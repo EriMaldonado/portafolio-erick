@@ -94,7 +94,7 @@ const TAB_DATA: TabData[] = [
               <Tooltip>
                 <TooltipTrigger>
                   <Image
-                    src="/HTML5.png"
+                    src="/html5.png"
                     alt="javascript"
                     className="p-2"
                     width={80}
