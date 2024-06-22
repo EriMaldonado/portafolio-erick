@@ -71,12 +71,12 @@ function Hero() {
             <div className="flex flex-col md:flex-row p-2 items-center">
             <Link href="https://github.com/EriMaldonado" target="blank">
               <div className="ml-2 mr-2 cursor-pointer text-[#15326F] hover:text-[#000000] dark:hover:text-[#ffffff]">
-                <FaGithub size={36} />
+                <FaGithub size={36} aria-label="GitHub"/>
               </div>
               </Link>
               <Link href="https://www.linkedin.com/in/erickmaldonado1" target="blank">
               <div className="mr-2 cursor-pointer text-[#15326F] hover:text-[#000000] dark:hover:text-[#ffffff]">
-                <ImLinkedin2 size={36} />
+                <ImLinkedin2 size={36} aria-label="LinkedIn"/>
               </div>
               </Link>
             </div>

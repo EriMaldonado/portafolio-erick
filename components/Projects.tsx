@@ -53,12 +53,12 @@ const projectsData = [
           </div>
 
           <div className="flex gap-2 pt-2 text-sm justify-center ">
-            <Link href="https://mueblesmaldonado.vercel.app/" target="blanck">
+            <Link href="https://mueblesmaldonadoec.com/" target="blank">
               <button className=" button-card rounded-sm transition duration-300 dark:text-white hover:bg-[#15326F] hover:text-white">
                 Web Site
               </button>
             </Link>
-            <Link href="/" target="blanck">
+            <Link href="/" target="blank">
               <button className="button-card rounded-sm transition duration-300 dark:text-white hover:bg-[#15326F] hover:text-white">
                 Github
               </button>
@@ -114,12 +114,12 @@ const projectsData = [
           </div>
 
           <div className="flex gap-2 pt-2 text-sm justify-center ">
-            <Link href="https://electrocreditoselahorro.com/" target="blanck">
+            <Link href="https://electrocreditoselahorro.com/" target="blank">
               <button className=" button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
                 Web Site
               </button>
             </Link>
-            <Link href="/" target="blanck">
+            <Link href="/" target="blank">
               <button className="button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
                 GitHub
               </button>
@@ -170,14 +170,14 @@ const projectsData = [
           </div>
 
           <div className="flex gap-2 pt-2 text-sm justify-center ">
-            <Link href="https://erickmaldonado.vercel.app/" target="blanck">
+            <Link href="https://erickmaldonado.vercel.app/" target="blank">
               <button className=" button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
                 Web Site
               </button>
             </Link>
             <Link
               href="https://github.com/EriMaldonado/portafolio-erick"
-              target="blanck"
+              target="blank"
             >
               <button className="button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
                 GitHub
@@ -229,7 +229,7 @@ const projectsData = [
           <div className="flex gap-2 pt-2 text-sm justify-center ">
             <Link
               href="https://erimaldonado.github.io/alura-geek/"
-              target="blanck"
+              target="blank"
             >
               <button className=" button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
                 Web Site
@@ -237,7 +237,7 @@ const projectsData = [
             </Link>
             <Link
               href="https://github.com/EriMaldonado/alura-geek/tree/master"
-              target="blanck"
+              target="blank"
             >
               <button className="button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
                 GitHub
@@ -291,7 +291,7 @@ const projectsData = [
           <div className="flex gap-2 pt-2 text-sm justify-center ">
             <Link
               href="https://erimaldonado.github.io/api-pixabay/"
-              target="blanck"
+              target="blank"
             >
               <button className=" button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
                 Web Site
@@ -299,7 +299,7 @@ const projectsData = [
             </Link>
             <Link
               href="https://github.com/EriMaldonado/api-pixabay/"
-              target="blanck"
+              target="blank"
             >
               <button className="button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
                 GitHub

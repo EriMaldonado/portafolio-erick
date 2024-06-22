@@ -28,6 +28,7 @@ const NavBar: React.FC = () => {
             <button
               className=" outline-none p-1 rounded-md focus:border-gray-400 focus:border"
               onClick={() => setState(!state)}
+              aria-label={state ? "Cerrar menú" : "Abrir menú"}
             >
               {state ? (
                 <svg
@@ -92,7 +93,7 @@ const NavBar: React.FC = () => {
             <div className="flex p-1 items-center ">
               <Link href="https://github.com/EriMaldonado" target="blank">
               <div className="ml-2  cursor-pointer text-[#757575] hover:text-[#000000] ">
-                <FaGithub size={35} />
+                <FaGithub size={35} aria-label="GitHub" />
               </div>
               </Link>
               

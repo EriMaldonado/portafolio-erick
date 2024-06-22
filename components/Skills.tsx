@@ -29,6 +29,7 @@ const TAB_DATA: TabData[] = [
             Frontend
           </h1>
           <ul className="flex flex-wrap pb-6 gap-5">
+            <li>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
@@ -152,6 +153,8 @@ const TAB_DATA: TabData[] = [
                 <TooltipContent>Shadcn UI</TooltipContent>
               </Tooltip>
             </TooltipProvider>
+            </li>
+           
           </ul>
         </div>
         <div className="gap-8 ">
@@ -159,6 +162,7 @@ const TAB_DATA: TabData[] = [
             Backend
           </h1>
           <ul className="flex flex-wrap pb-6">
+            <li>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
@@ -270,6 +274,8 @@ const TAB_DATA: TabData[] = [
                 <TooltipContent>Google Cloud Platform</TooltipContent>
               </Tooltip>
             </TooltipProvider>
+            </li>
+            
           </ul>
         </div>
         <div className="gap-8 ">
@@ -277,6 +283,7 @@ const TAB_DATA: TabData[] = [
             Development Tools
           </h1>
           <ul className="flex flex-wrap pb-6">
+            <li>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
@@ -341,6 +348,8 @@ const TAB_DATA: TabData[] = [
                 <TooltipContent>AdobeXD</TooltipContent>
               </Tooltip>
             </TooltipProvider>
+            </li>
+           
           </ul>
         </div>
       </div>

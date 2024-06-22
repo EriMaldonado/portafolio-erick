@@ -7,7 +7,7 @@ import { MdEmail } from "react-icons/md";
 import SuccessMessage from "./SuccessMessage";
 import Image from "next/image";
 function ContactSection() {
-  const form = useRef<HTMLFormElement>(null); // Inicializar la referencia con null
+  const form = useRef<HTMLFormElement>(null); 
   const [status, setStatus] = useState<{ success?: boolean; message?: string }>(
     {}
   );
