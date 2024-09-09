@@ -61,19 +61,19 @@ const NavBar: React.FC = () => {
               )}
             </button>
           </div>
-          <div className="flex justify-center items-center gap-x-4">
+          <div className="flex justify-center items-center gap-x-2">
             <Link href="/">
               <img
                 src="/Erick.png"
                 alt="image"
-                className="w-14 h-14 rounded-full "
-                width={16}
+                className="w-14 h-16 rounded"
+                width={14}
                 height={16}
                 style={{ pointerEvents: "none" }}
               />
             </Link>
             <a
-              href="https://drive.google.com/file/d/1lV947iYORpZk8hVBtUPVSFJQPfgh8WTt/view?usp=sharing"
+              href="https://drive.google.com/file/d/1eJyzErRXcGruyISlrignnqOI4YqRNLqT/view?usp=sharing"
               target="_blank"
               className="text-sm text-gray-900 hover:text-gray-900 dark:hover:text-white"
             >
@@ -83,7 +83,7 @@ const NavBar: React.FC = () => {
                 </span>
 
                 <span className="block dark:text-gray-400 text-sm ">
-                  Frontend Developer
+                  Frontend Developer | Information Technology Engineer.
                 </span>
               </div>
             </a>
@@ -92,11 +92,10 @@ const NavBar: React.FC = () => {
             <ModeDark />
             <div className="flex p-1 items-center ">
               <Link href="https://github.com/EriMaldonado" target="blank">
-              <div className="ml-2  cursor-pointer text-[#757575] hover:text-[#000000] ">
-                <FaGithub size={35} aria-label="GitHub" />
-              </div>
+                <div className="ml-2  cursor-pointer text-[#757575] hover:text-[#000000] ">
+                  <FaGithub size={35} aria-label="GitHub" />
+                </div>
               </Link>
-              
             </div>
           </div>
         </div>
