@@ -15,8 +15,8 @@ function Hero() {
   const [selectedLanguage, setSelectedLanguage] = useState<"es" | "en">("es");
 
   const urls: DocumentUrls = {
-    es: "https://drive.google.com/file/d/10sjLQdBq2aDPkImfqvhcpJU-k8lDjQsP/view?usp=sharing", 
-    en: "https://drive.google.com/file/d/1eJyzErRXcGruyISlrignnqOI4YqRNLqT/view?usp=sharing", 
+    es: "https://drive.google.com/file/d/1reicm3yxV7ryhQ08k_idZI_7QxLX31SN/view?usp=sharing",
+    en: "https://drive.google.com/file/d/1csptt8-qQ-yBTeVr1FATltgPYqBLHvLm/view?usp=sharing",
   };
   const handleDownload = () => {
     window.open(urls[selectedLanguage], "_blank");
@@ -36,24 +36,35 @@ function Hero() {
             transition={{ duration: 0.5 }}
             className="col-span-1 sm:text-left justify-self-start"
           >
-            <h1 className="text-md font-bold leading-none text-3xl">
-              Hello, I&apos;m Erick 👋
-              <br />
-              <span className="text-[#15326F]">
-                <TypeAnimation
-                  sequence={[
-                    "Frontend Developer",
-                    1000,
-                    "Information Technologies",
-                    1000,
-                    "Frontend Developer",
-                    1000,
-                  ]}
-                  wrapper="span"
-                  speed={50}
-                />
-              </span>
-            </h1>
+            <div className="flex items-center">
+              <img
+                src="/Erick.png"
+                alt="image"
+                className="w-16 h-18 rounded"
+                width={14}
+                height={16}
+                style={{ pointerEvents: "none" }}
+              />
+
+              <h1 className="text-md font-bold leading-none text-3xl ml-2">
+                Hello, I&apos;m Erick 👋
+                <br />
+                <span className="text-[#15326F]">
+                  <TypeAnimation
+                    sequence={[
+                      "Software Developer",
+                      1000,
+                      "Information Technologies",
+                      1000,
+                      "Frontend Developer",
+                      1000,
+                    ]}
+                    wrapper="span"
+                    speed={50}
+                  />
+                </span>
+              </h1>
+            </div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
