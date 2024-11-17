@@ -21,7 +21,7 @@ const NavBar: React.FC = () => {
   ];
 
   return (
-    <nav className=" fixed  border-b w-full md:border-0  bg-[#e7dac5] dark:bg-[#121212]">
+    <nav className=" fixed  border-b w-full md:border-0 pt-2 pb-2 bg-[#e7dac5] dark:bg-[#121212]">
       <div className="items-center px-3 max-w-screen-xl mx-auto md:flex md:px-8 ">
         <div className="flex items-center justify-between py-2 md:py-2">
           <div className="md:hidden">
@@ -62,9 +62,8 @@ const NavBar: React.FC = () => {
             </button>
           </div>
           <div className="flex justify-center items-center gap-x-2">
-           
             <a
-              href="https://drive.google.com/file/d/1eJyzErRXcGruyISlrignnqOI4YqRNLqT/view?usp=sharing"
+              href="https://drive.google.com/file/d/1njbb5Dbyx_LbngQQ7riSa0UkGJEy4HSa/view?usp=sharing"
               target="_blank"
               className="text-sm text-gray-900 hover:text-gray-900 dark:hover:text-white"
             >
@@ -74,7 +73,7 @@ const NavBar: React.FC = () => {
                 </span>
 
                 <span className="block dark:text-gray-400 text-sm ">
-                  Software Developer | Information Technology Engineer.
+                  Software Developer | IT Engineer.
                 </span>
               </div>
             </a>

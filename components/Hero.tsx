@@ -15,8 +15,8 @@ function Hero() {
   const [selectedLanguage, setSelectedLanguage] = useState<"es" | "en">("es");
 
   const urls: DocumentUrls = {
-    es: "https://drive.google.com/file/d/1reicm3yxV7ryhQ08k_idZI_7QxLX31SN/view?usp=sharing",
-    en: "https://drive.google.com/file/d/1csptt8-qQ-yBTeVr1FATltgPYqBLHvLm/view?usp=sharing",
+    es: "https://drive.google.com/file/d/1groqaAyG2CrxMH27_rY7RwcmjIaQ18IH/view?usp=sharing",
+    en: "https://drive.google.com/file/d/1njbb5Dbyx_LbngQQ7riSa0UkGJEy4HSa/view?usp=sharing",
   };
   const handleDownload = () => {
     window.open(urls[selectedLanguage], "_blank");
@@ -72,10 +72,13 @@ function Hero() {
             transition={{ duration: 1.0 }}
             className="col-span-1 sm:text-left justify-self-start"
           >
-            <p className="mt-6 mb-8 pr-1 text-lg sm:mb-12 font-semibold md:text-left dark:text-gray-400">
-              I focus on continuous learning. I recognize the importance of
-              teamwork, effective communication and organization as essential
-              elements to achieve objectives in any environment.
+            <p className="mt-6 mb-6 pr-0.5 text-lg sm:mb-12 font-semibold md:text-left dark:text-gray-400">
+              I am a software developer with experience in Node.js, JavaScript,
+              PHP, React, Next.js, MySQL, MongoDB, Tailwind CSS and Material UI.
+              I specialize in building high-performance, scalable applications
+              and API integration. Passionate about continuous learning. I value
+              teamwork, effective communication and organization to achieve
+              objectives in any development environment.
             </p>
           </motion.div>
           <motion.div
@@ -90,7 +93,7 @@ function Hero() {
                 onMouseDown={(e) => e.preventDefault()}
                 className="button dark:text-white rounded-sm"
               >
-                <span className="button-text dark:text-white pl-4 pr-4">
+                <span className="button-text dark:text-white pl-2 pr-2">
                   Resume
                 </span>
                 <div className="button-fill"></div>
@@ -98,13 +101,13 @@ function Hero() {
               <select
                 value={selectedLanguage}
                 onChange={handleLanguageChange}
-                className="bg-white border border-gray-300 rounded-md shadow-sm dark:bg-gray-900 dark:border-gray-600 text-gray-950 dark:text-white py-2 px-3 focus:outline-none focus:ring-2 focus:ring-[#15326F] dark:focus:ring-[#f3f2eb] transition duration-150 ease-in-out"
+                className="bg-transparent font-bold border border-gray-950  rounded-sm shadow-sm dark:bg-gray-900 dark:border-gray-600 text-gray-950 dark:text-white py-2 px-3 focus:outline-none focus:ring-2 focus:ring-[#15326F] dark:focus:ring-[#f3f2eb] transition duration-150 ease-in-out"
               >
                 <option value="es">Español</option>
                 <option value="en">English</option>
               </select>
 
-              <div className="flex flex-col md:flex-row p-2 items-center">
+              <div className="flex flex-wrap md:flex-row p-2 items-center justify-center">
                 <Link href="https://github.com/EriMaldonado" target="blank">
                   <div className="ml-2 mr-2 cursor-pointer text-[#15326F] hover:text-[#000000] dark:hover:text-[#ffffff]">
                     <FaGithub size={36} aria-label="GitHub" />
@@ -133,9 +136,9 @@ function Hero() {
             <Image
               src="./developer.svg"
               alt="image"
-              width={40}
+              width={42}
               height={48}
-              className="object-contain p-8 w-full max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-md"
+              className="object-contain p-10 w-full max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-md"
             />
           </motion.div>
         </div>

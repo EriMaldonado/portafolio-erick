@@ -192,8 +192,8 @@ const TAB_DATA: TabData[] = [
               <Tooltip>
                 <TooltipTrigger>
                   <Image
-                    src="/django.png"
-                    alt="django"
+                    src="/php.png"
+                    alt="PHP"
                     className="p-2"
                     width={80}
                     height={80}

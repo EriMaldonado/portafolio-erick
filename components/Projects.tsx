@@ -176,7 +176,7 @@ const projectsData = [
               </button>
             </Link>
             <Link
-              href="https://github.com/EriMaldonado/portafolio-erick"
+              href="#"
               target="blank"
             >
               <button className="button-card rounded-sm transition duration-300 dark:text-white hover:bg-blue-900 hover:text-white">
@@ -268,7 +268,7 @@ const projectsData = [
           </div>
 
           <div className="flex justify-center flex-wrap gap-2 text-xs font-semibold max-w-xs">
-            {["React", "Javascript", "node", "apis", "CSS"].map(
+            {["React", "node", "apis", "CSS"].map(
               (tech, index) => (
                 <span
                   key={index}
