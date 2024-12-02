@@ -15,8 +15,8 @@ function Hero() {
   const [selectedLanguage, setSelectedLanguage] = useState<"es" | "en">("es");
 
   const urls: DocumentUrls = {
-    es: "https://drive.google.com/file/d/1groqaAyG2CrxMH27_rY7RwcmjIaQ18IH/view?usp=sharing",
-    en: "https://drive.google.com/file/d/1njbb5Dbyx_LbngQQ7riSa0UkGJEy4HSa/view?usp=sharing",
+    es: "https://drive.google.com/file/d/1UWFc7LmGJwFZCsK0Gm6F9QUjZl1uNOQz/view?usp=sharing",
+    en: "https://drive.google.com/file/d/1Ok0AyzPuDa6g4Z6Fm1dtvE1EHsCCHeOu/view?usp=sharing",
   };
   const handleDownload = () => {
     window.open(urls[selectedLanguage], "_blank");
@@ -27,7 +27,7 @@ function Hero() {
   };
 
   return (
-    <section id="home" className="pt-24 bg-[#FFF5E6] dark:bg-[#121212]">
+    <section id="home" className="pt-20 bg-[#FFF5E6] dark:bg-[#121212]">
       <div className="max-w-5xl p-3 w-full flex flex-col sm:p-4 mx-auto my-auto lg:flex-row lg:justify-around">
         <div className="flex flex-col pt-32 pb-16 rounded-sm lg:max-w-lg xl:max-w-lg lg:text-left">
           <motion.div

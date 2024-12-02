@@ -63,7 +63,7 @@ const NavBar: React.FC = () => {
           </div>
           <div className="flex justify-center items-center gap-x-2">
             <a
-              href="https://drive.google.com/file/d/1njbb5Dbyx_LbngQQ7riSa0UkGJEy4HSa/view?usp=sharing"
+              href="https://drive.google.com/file/d/1Ok0AyzPuDa6g4Z6Fm1dtvE1EHsCCHeOu/view?usp=sharing"
               target="_blank"
               className="text-sm text-gray-900 hover:text-gray-900 dark:hover:text-white"
             >
