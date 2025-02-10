@@ -15,8 +15,8 @@ function Hero() {
   const [selectedLanguage, setSelectedLanguage] = useState<"es" | "en">("es");
 
   const urls: DocumentUrls = {
-    es: "https://drive.google.com/file/d/1UWFc7LmGJwFZCsK0Gm6F9QUjZl1uNOQz/view?usp=sharing",
-    en: "https://drive.google.com/file/d/1Ok0AyzPuDa6g4Z6Fm1dtvE1EHsCCHeOu/view?usp=sharing",
+    es: "https://drive.google.com/file/d/1A4dkhy6G3nENhoecPb6PGIik8U_2KL7f/view?usp=sharing",
+    en: "https://drive.google.com/file/d/1r1ro_WBzVy9ourkRDzxFyCOeuDOyNBVR/view?usp=sharing",
   };
   const handleDownload = () => {
     window.open(urls[selectedLanguage], "_blank");
