@@ -12,7 +12,11 @@ const variants: Variants = {
   active: { width: "calc(100% - 0.75rem)" },
 };
 
-const TabButton: React.FC<TabButtonProps> = ({ active, selectTab, children }) => {
+const TabButton: React.FC<TabButtonProps> = ({
+  active,
+  selectTab,
+  children,
+}) => {
   const buttonClasses = active ? "darck:text-[#3F3D56]" : "text-[#848484]";
 
   return (
