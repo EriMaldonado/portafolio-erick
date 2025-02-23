@@ -27,26 +27,20 @@ const ProjectsData = [
   },
   {
     id: 2,
-    title: "Electrocréditos el Ahorro",
+    title: "Pixabay-Clone",
     tag: ["All", "Web"],
     content: (
       <ProjectLayout
-        image="/electrocreditos.png"
-        title="Electrocréditos el Ahorro"
-        description="Electrocréditos el Ahorro"
-        technologies={[
-          "Javascript",
-          "Bootstrap",
-          "Nextjs",
-          "Node",
-          "Mysql",
-          "React",
-        ]}
-        website="https://electrocreditoselahorro.com/"
-        github="#"
+        image="/pixabayclone.jpg"
+        title="Pixabay Clone Image Search"
+        description="Búsqueda de imágenes usando la API de Pixabay"
+        technologies={["Javascript", "React", "Node", "APIs", "CSS", "HTML5"]}
+        website="https://erimaldonado.github.io/pixabay-clone/"
+        github="https://github.com/EriMaldonado/pixabay-clone/"
       />
     ),
   },
+
   {
     id: 3,
     title: "Personal Portfolio",
@@ -70,6 +64,28 @@ const ProjectsData = [
     ),
   },
   {
+    id: 2,
+    title: "Electrocréditos el Ahorro",
+    tag: ["All", "Web"],
+    content: (
+      <ProjectLayout
+        image="/electrocreditos.png"
+        title="Electrocréditos el Ahorro"
+        description="Electrocréditos el Ahorro"
+        technologies={[
+          "Javascript",
+          "Bootstrap",
+          "Nextjs",
+          "Node",
+          "Mysql",
+          "React",
+        ]}
+        website="https://electrocreditoselahorro.com/"
+        github="#"
+      />
+    ),
+  },
+  {
     id: 4,
     title: "Alura Geek",
     tag: ["All", "Web"],
@@ -78,24 +94,9 @@ const ProjectsData = [
         image="/alura.png"
         title="AluraGeek"
         description="Proyecto de Alura Geek"
-        technologies={["React", "Javascript", "CSS", "HTML5"]}
+        technologies={["React", "Javascript", "Mysql", "CSS", "HTML5"]}
         website="https://erimaldonado.github.io/alura-geek/"
         github="https://github.com/EriMaldonado/alura-geek/tree/master"
-      />
-    ),
-  },
-  {
-    id: 5,
-    title: "Api Pixabay",
-    tag: ["All", "Web"],
-    content: (
-      <ProjectLayout
-        image="/api-pixabay.png"
-        title="Pixabay Image Search"
-        description="Búsqueda de imágenes usando la API de Pixabay"
-        technologies={["Javascript", "React", "Node", "APIs", "CSS"]}
-        website="https://erimaldonado.github.io/api-pixabay/"
-        github="https://github.com/EriMaldonado/api-pixabay/"
       />
     ),
   },
