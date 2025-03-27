@@ -15,7 +15,7 @@ type DocumentUrls = {
 function Hero() {
   const [selectedLanguage, setSelectedLanguage] = useState<"es" | "en">("es");
   const urls: DocumentUrls = {
-    es: "https://drive.google.com/file/d/1MoKWNrj46P3Q6yxAXrYUUq_cLz7McTZO/view?usp=sharing",
+    es: "https://drive.google.com/file/d/11c_zRuUyZkIHJrKVxu4tpujLoOKPMarb/view?usp=sharing",
     en: "https://drive.google.com/file/d/1paakfVImhyyT1P_U0wxQDlewN7WP274L/view?usp=sharing",
   };
 
