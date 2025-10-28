@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ModeDark from "../providers/ModeDark";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
@@ -12,26 +12,42 @@ interface NavBarItem {
 }
 
 const NavBar: React.FC = () => {
-  const [state, setState] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const NavBar: NavBarItem[] = [
+  const NavBarItems: NavBarItem[] = [
     { title: "Home", path: "#home" },
     { title: "Skills", path: "#skills" },
     { title: "Projects", path: "#projects" },
     { title: "Contact", path: "#contact" },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 w-full bg-[#e5dec7] dark:bg-[#121212]  shadow-md z-50 transition-all duration-300 ease-in-out">
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 backdrop-blur-sm bg-opacity-80 transition-colors duration-300 ease-in-out
+    ${scrolled ? "bg-[#e9e8e4]/90 dark:bg-black/90" : "bg-transparent"}
+  `}
+    >
       <div className="items-center px-3 max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-2 md:py-2">
           <div className="md:hidden">
             <button
               className="outline-none p-1 rounded-md focus:border-gray-400 focus:border"
-              onClick={() => setState(!state)}
-              aria-label={state ? "Cerrar menú" : "Abrir menú"}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             >
-              {state ? (
+              {menuOpen ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -84,8 +100,8 @@ const NavBar: React.FC = () => {
           <div className="pl-1 md:hidden flex items-center">
             <ModeDark />
             <div className="flex p-1 items-center">
-              <Link href="https://github.com/EriMaldonado" target="blank">
-                <div className="ml-2 cursor-pointer text-gray-700  hover:text-black dark:text-white dark:hover:text-gray-700 transition-all duration-300">
+              <Link href="https://github.com/EriMaldonado" target="_blank">
+                <div className="ml-2 cursor-pointer text-gray-700 hover:text-black dark:text-white dark:hover:text-gray-700 transition-all duration-300">
                   <FaGithub size={35} aria-label="GitHub" />
                 </div>
               </Link>
@@ -94,11 +110,11 @@ const NavBar: React.FC = () => {
         </div>
         <div
           className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-            state ? "block" : "hidden"
+            menuOpen ? "block" : "hidden"
           } transition-all duration-300 ease-in-out`}
         >
           <ul className="justify-end items-center space-y-8 md:flex md:space-x-10 md:space-y-0">
-            {NavBar.map((item, idx) => (
+            {NavBarItems.map((item, idx) => (
               <li
                 key={idx}
                 className="text-bold border-b-4 border-transparent hover:border-[#15326F] dark:hover:border-[#ffffff] transition-all duration-300 ease-in-out"
@@ -120,4 +136,5 @@ const NavBar: React.FC = () => {
     </nav>
   );
 };
+
 export default NavBar;

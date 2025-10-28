@@ -54,7 +54,7 @@ function ContactSection() {
   };
 
   return (
-    <div className="bg-gradient-to-r from-[#e5dec7] to-[#decfba] dark:from-[#121212] dark:to-[#1f2937] light:bg-[#F5F5F5] min-h-screen pb-12">
+    <div className="min-h-screen pb-12 bg-[#e9e8e4]/90 dark:bg-gradient-to-br dark:from-[#121212] dark:to-[#1f2937]">
       <section
         id="contact"
         className="max-w-6xl w-full p-4 gap-2 items-center justify-center flex-col sm:p-4 mx-auto"
@@ -109,7 +109,7 @@ function ContactSection() {
                   <div className="pt-2 flex flex-col items-start">
                     <button
                       type="submit"
-                      className="text-xl rounded-xl transition duration-300 bg-[#15326F] text-white hover:bg-[#333333] dark:bg-black dark:hover:bg-[#333333] dark:text-white hover:text-white p-2 pl-4 pr-4 sm:w-auto"
+                      className="text-xl rounded-xl transition duration-300 bg-[#1f2937] text-white hover:bg-[#333333] dark:bg-black dark:hover:bg-[#333333] dark:text-white hover:text-white p-2 pl-4 pr-4 sm:w-auto"
                     >
                       Get in touch
                     </button>

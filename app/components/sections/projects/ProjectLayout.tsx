@@ -23,7 +23,7 @@ interface ProjectLayoutProps {
 const Button = ({ link, text, direction }: ButtonProps) => (
   <Link href={link} target="_blank">
     <button
-      className={`py-1 px-4 rounded-xl bg-[#15326F] text-white font-medium transition duration-1000 transform group-hover:translate-x-0 hover:bg-[#333333] hover:scale-105 hover:shadow-xl ${
+      className={`py-1 px-4 rounded-xl bg-gray-800 text-white font-medium transition duration-1000 transform group-hover:translate-x-0 hover:bg-[#333333] hover:scale-105 hover:shadow-xl ${
         direction === "left"
           ? "translate-x-[-100%] group-hover:translate-x-0"
           : "translate-x-[100%] group-hover:translate-x-0"
@@ -63,7 +63,7 @@ const ProjectLayout = ({
   website,
   github,
 }: ProjectLayoutProps) => (
-  <div className="relative flex flex-col items-center bg-[#E7DAC5] rounded-xl shadow-lg dark:bg-gray-800 overflow-hidden">
+  <div className="relative flex flex-col items-center bg-[#e9e8e4]/90 rounded-xl shadow-lg dark:bg-gray-800 overflow-hidden">
     <div className="relative group w-full">
       <Image
         className="object-cover w-full h-64 md:h-64 lg:h-64 transition-transform duration-500 group-hover:scale-105"

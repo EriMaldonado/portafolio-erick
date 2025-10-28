@@ -46,49 +46,42 @@ const TechData = [
 ];
 
 const SkillsTabContent: React.FC = () => {
-  return (
-    <div className="space-y-8">
-      <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 sm:grid-col-3 gap-12 px-4 pt-4">
-        {TechData.map((category) => (
-          <div
-            key={category.category}
-            className="col-span-1 flex justify-center"
-          >
-            <div className="bg-[#e5dec7] dark:bg-gray-800 rounded-xl shadow-xl w-full max-w-md hover:shadow-2xl transform transition-all duration-300 p-3">
-              <h2 className="text-2xl font-bold text-center text-[#15326F] pb-3 dark:text-[#5872c5]">
-                {category.category}
-              </h2>
-              <div className="grid grid-cols-3 gap-6">
-                {category.items.slice(0, 9).map((item, index) => (
-                  <div
-                    key={index}
-                    className="group relative bg-[#e5dec7] dark:bg-gray-800 
-                  
-                    rounded-xl shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                  >
-                    <div className="w-12 h-12 relative mx-auto mb-3">
-                      <Image
-                        src={item.src}
-                        alt={item.alt}
-                        fill
-                        style={{ objectFit: "contain" }}
-                        className="transition-transform duration-500 ease-in-out transform group-hover:scale-110"
-                      />
-                    </div>
-                    <div className="text-center">
-                      <span className="text-lg text-[#333333] dark:text-white font-semibold">
-                        {item.label}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+   return (
+     <div className="space-y-10 py-6">
+       <div className="max-w-7xl w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 ">
+         {TechData.map((category) => (
+           <div key={category.category} className="flex justify-center">
+             <div className="bg-gradient-to-br from-[#e9e8e4]/90 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-xl w-full max-w-md p-4 transition-transform hover:scale-105 hover:shadow-2xl">
+               <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200 pb-4">
+                 {category.category}
+               </h2>
+               <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
+                 {category.items.map((item, index) => (
+                   <div
+                     key={index}
+                     className="group flex flex-col items-center bg-white dark:bg-gray-700 rounded-xl p-2 shadow-md transition-all hover:scale-105 hover:shadow-lg"
+                   >
+                     <div className="w-10 h-10 relative mb-1">
+                       <Image
+                         src={item.src}
+                         alt={item.alt}
+                         fill
+                         style={{ objectFit: "contain" }}
+                         className="transition-transform duration-500 ease-in-out transform group-hover:rotate-6"
+                       />
+                     </div>
+                     <span className="text-sm font-semibold text-gray-700 dark:text-white text-center">
+                       {item.label}
+                     </span>
+                   </div>
+                 ))}
+               </div>
+             </div>
+           </div>
+         ))}
+       </div>
+     </div>
+   );
 };
 
 export default SkillsTabContent;

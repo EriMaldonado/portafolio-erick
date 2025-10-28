@@ -27,7 +27,7 @@ const TabButton: React.FC<TabButtonProps> = ({
       <motion.div
         animate={active ? "active" : "default"}
         variants={variants}
-        className="h-1 bg-[#15326F] mt-2 mr-3"
+        className="h-1 bg-gray-800 mt-2 mr-3"
       ></motion.div>
     </button>
   );

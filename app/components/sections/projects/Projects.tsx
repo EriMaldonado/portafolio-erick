@@ -4,7 +4,7 @@ import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
 import { motion, useInView } from "framer-motion";
 import ProjectsData from "./ProjectData";
-
+import GalaxyBackground from "../../GalaxiBackground";
 const Projects = () => {
   const [tag, setTag] = useState("All");
   const ref = useRef(null);
@@ -25,12 +25,10 @@ const Projects = () => {
 
   return (
     <section
-      className="bg-gradient-to-r from-[#e5dec7] to-[#decfba] dark:from-[#121212] dark:to-[#1f2937] light:bg-[#F5F5F5] pt-20"
+      className="bg-gradient-to-r light:bg-[#EAB308] min-h-screen pt-20"
       id="projects"
     >
-      <h2 className="text-center text-3xl font-bold mb-2">
-        My Projects
-      </h2>
+      <h2 className="text-center text-3xl font-bold mb-2">My Projects</h2>
       <div className="flex flex-row rounded-sm justify-center items-center pt-2 gap-4">
         <ProjectTag
           onClick={handleTagChange}
