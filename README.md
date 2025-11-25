@@ -1,20 +1,44 @@
-# 🚀 **Personal Portfolio Website** | Built with **Next.js**, **TypeScript**, and **Tailwind CSS**
+# 🚀 **Personal Portfolio Website**  
+Construido con **Next.js**, **TypeScript** y **Tailwind CSS**
 
-🔗 **[Visit the Portfolio](https://erickmaldonado.vercel.app/)**
+🔗 **[Visitar el Portafolio](https://erickmaldonado.vercel.app/)**
 
-![Imagen del proyecto](https://github.com/EriMaldonado/portafolio/blob/main/public/portafolio.png?raw=true)
+![Vista previa del proyecto](https://github.com/EriMaldonado/portafolio/blob/main/public/portafolio.png?raw=true)
 
-## 📑 **Project Overview**
-This project is my personal portfolio, where I show my skills and completed projects. It is built using Next.js with TypeScript for the front-end and Tailwind CSS for the layout. It also incorporates Emailjs for email functionality.
+---
 
-## 🌟 **Key Features**
-- Responsive and modern design.
-- Emailjs integration for email functionality.
-- Use TypeScript for more robust and maintainable code.
+## 📑 **Descripción General**
+Este proyecto es mi portafolio personal, donde presento mis habilidades, experiencia y una selección de proyectos destacados.  
+Está desarrollado con **Next.js** y **TypeScript** para un front-end moderno y escalable, junto con **Tailwind CSS** para un diseño eficiente, limpio y completamente responsive.  
+Además, integra **EmailJS** para gestionar el envío de correos desde el formulario de contacto.
 
-## Autor ✒️
-**Erick Maldonado**
+---
 
-* 📧 Email: erickgabrielmaldonado1@gmail.com
-* 🌐 Portfolio: https://erickmaldonado.vercel.app/
-* 🔗 LinkedIn: https://www.linkedin.com/in/erickmaldonado1/
+## 🌟 **Características Principales**
+- ✔️ Diseño moderno, minimalista y completamente responsive  
+- ✔️ Componentes optimizados con React y TypeScript  
+- ✔️ Animaciones fluidas y experiencia de usuario profesional  
+- ✔️ Integración con **EmailJS** para envío de mensajes  
+- ✔️ Arquitectura limpia, modular y fácil de mantener  
+
+---
+
+## 🛠️ **Tecnologías Utilizadas**
+- **Next.js 15**
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **EmailJS**
+- **Vercel** (Deploy)
+
+---
+
+## 👨‍💻 Autor
+
+Erick Maldonado
+
+📧 Email: erickgabrielmaldonado1@gmail.com
+
+🌐 Portafolio: https://erickmaldonado.vercel.app/
+
+🔗 LinkedIn: https://www.linkedin.com/in/erickmaldonado1/
