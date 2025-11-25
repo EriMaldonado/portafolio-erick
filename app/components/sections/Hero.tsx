@@ -59,7 +59,6 @@ function Hero() {
       className="relative pt-10 flex items-center overflow-hidden bg-gradient-to-r light:bg-[#EAB308] min-h-screen"
     >
       <div className="max-w-6xl p-3 w-full flex flex-col sm:p-6 mx-auto my-auto lg:flex-row lg:justify-between">
-        {/* Texto de presentación */}
         <div className="flex flex-col pt-32 pb-16 rounded-lg lg:w-3/5 xl:w-3/5 lg:text-left text-white sm:text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
@@ -147,8 +146,6 @@ function Hero() {
             </div>
           </motion.div>
         </div>
-
-        {/* Imagen interactiva */}
         <div className="flex items-center justify-center p-12 mt-12 lg:mt-0 lg:w-2/5 xl:w-2/5 relative">
           <div
             className="relative z-10 cursor-pointer w-full"
@@ -182,8 +179,6 @@ function Hero() {
                   else if (hoverSide === "right") handleClick("projects");
                 }}
               />
-
-              {/* Botón dinámico en la parte superior */}
               {hoverSide && (
                 <motion.div
                   className="absolute top-4 left-1/2 -translate-x-1/2 z-20"

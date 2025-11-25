@@ -3,7 +3,6 @@ import TabButton from "../../ui/TabButton";
 import SkillsTabContent from "./SkillsTabContent";
 import EducationTabContent from "./EducationTabContent";
 
-
 const SkillSection: React.FC = () => {
   const [tab, setTab] = useState<string>("skills");
   const [isPending, startTransition] = useTransition();
@@ -20,12 +19,9 @@ const SkillSection: React.FC = () => {
       id="skills"
     >
       <div className="max-w-6xl mx-auto px-4 flex flex-col items-center">
-        {/* Título */}
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-6">
           Skills
         </h2>
-
-        {/* Tabs */}
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <TabButton
             selectTab={() => handleTabChange("skills")}
@@ -40,8 +36,6 @@ const SkillSection: React.FC = () => {
             Education & Certifications
           </TabButton>
         </div>
-
-        {/* Contenido de Tabs */}
         <div className="w-full">
           {tab === "skills" && <SkillsTabContent />}
           {tab === "education" && <EducationTabContent />}

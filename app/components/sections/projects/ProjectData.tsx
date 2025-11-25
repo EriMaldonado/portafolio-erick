@@ -59,29 +59,7 @@ const ProjectsData = [
           "Shadcn",
         ]}
         website="https://erickmaldonado.vercel.app/"
-        github="#"
-      />
-    ),
-  },
-  {
-    id: 2,
-    title: "Electrocréditos el Ahorro",
-    tag: ["All", "Web"],
-    content: (
-      <ProjectLayout
-        image="/electrocreditos.png"
-        title="Electrocréditos el Ahorro"
-        description="Electrocréditos el Ahorro"
-        technologies={[
-          "Javascript",
-          "Bootstrap",
-          "Nextjs",
-          "Node",
-          "Mysql",
-          "React",
-        ]}
-        website="https://electrocreditoselahorro.com/"
-        github="#"
+        github="https://github.com/EriMaldonado/portafolio-erick"
       />
     ),
   },
