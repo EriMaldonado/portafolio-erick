@@ -20,8 +20,8 @@ function Hero() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const urls: DocumentUrls = {
-    es: "https://drive.google.com/file/d/1ZSq0sgob4d1_W4oXa8hXYua0wxyFVJJV/view?usp=sharing",
-    en: "https://drive.google.com/file/d/1sV59UxhyURTVYYrotaMxnS7-YNzJt7IU/view?usp=sharing",
+    es: "https://drive.google.com/file/d/1Magc2hZAHGRizXFPXCyUjrJglr7vhFxf/view?usp=sharing",
+    en: "https://drive.google.com/file/d/1m6BIWkk9uUaPW2WQbyLILSxaAk6Y0SBo/view?usp=sharing",
   };
 
   const handleDownload = () => {
