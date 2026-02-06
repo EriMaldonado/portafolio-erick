@@ -1,53 +1,81 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import ModeDark from "../providers/ModeDark";
-import { FaGithub } from "react-icons/fa";
+import React, { useState } from "react";
+import { ModeDark, LanguageToggle } from "@/providers";
+import { useTranslation } from "@/lib/i18n";
+import { useScrollPosition } from "@/lib/hooks";
+import { NAV_ITEMS } from "@/lib/constants";
 import Link from "next/link";
 import Image from "next/image";
 
-interface NavBarItem {
-  title: string;
-  path: string;
-}
-
 const NavBar: React.FC = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [navbarOpen, setNavbarOpen] = useState(false);
+  const scrolled = useScrollPosition(50);
+  const { t } = useTranslation();
 
-  const NavBarItems: NavBarItem[] = [
-    { title: "Home", path: "#home" },
-    { title: "Skills", path: "#skills" },
-    { title: "Projects", path: "#projects" },
-    { title: "Contact", path: "#contact" },
-  ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 0);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const navLinks = NAV_ITEMS.map((item) => ({
+    title: t.nav[item.id as keyof typeof t.nav],
+    path: item.path,
+  }));
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 backdrop-blur-sm bg-opacity-80 transition-colors duration-300 ease-in-out
-    ${scrolled ? "bg-[#e9e8e4]/90 dark:bg-black/90" : "bg-transparent"}
-  `}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${
+        scrolled
+          ? "bg-white/80 dark:bg-black/80 backdrop-blur-lg shadow-lg border-b border-gray-200 dark:border-gray-800"
+          : "bg-transparent backdrop-blur-sm"
+      }`}
     >
-      <div className="items-center px-3 max-w-screen-xl mx-auto md:flex md:px-8">
-        <div className="flex items-center justify-between py-2 md:py-2">
-          <div className="md:hidden">
+      <div className="max-w-screen-xl mx-auto px-4 md:px-8">
+        <div className="flex items-center justify-between py-3 md:py-4">
+          <div className="flex items-center gap-x-3">
+            <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-primary/20 hover:ring-primary/40 transition-all">
+              <Image
+                src="/logo.png"
+                alt="Erick"
+                width={48}
+                height={48}
+                className="object-cover"
+              />
+            </div>
+            <div className="block">
+              <span className="block text-gray-900 dark:text-white font-bold text-lg">
+                Erick Maldonado
+              </span>
+              <span className="block text-gray-700 dark:text-gray-400 text-md">
+                IT Engineer | Software Developer
+              </span>
+            </div>
+          </div>
+
+          <div className="hidden md:flex items-center justify-center flex-1">
+            <ul className="flex items-center space-x-8">
+              {navLinks.map((item, idx) => (
+                <li key={idx}>
+                  <Link
+                    href={item.path}
+                    className="text-lg font-semibold text-gray-900 hover:text-primary dark:text-white dark:hover:text-primary transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-primary pb-1"
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <div className="hidden md:flex items-center gap-2">
+              <LanguageToggle />
+              <ModeDark />
+            </div>
+
             <button
-              className="outline-none p-1 rounded-md focus:border-gray-400 focus:border"
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+              className="md:hidden outline-none p-2 rounded-md text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              onClick={() => setNavbarOpen(!navbarOpen)}
+              aria-label={navbarOpen ? "Close menu" : "Open menu"}
+              aria-expanded={navbarOpen}
             >
-              {menuOpen ? (
+              {navbarOpen ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -78,59 +106,31 @@ const NavBar: React.FC = () => {
               )}
             </button>
           </div>
-          <div className="flex items-center gap-x-4">
-            <div className="w-12 h-12 rounded-full overflow-hidden">
-              <Image
-                src="/erick.jpg"
-                alt="Avatar"
-                width={48}
-                height={48}
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <span className="block text-gray-900 dark:text-white font-bold">
-                Erick Maldonado
-              </span>
-              <span className="block text-gray-700 dark:text-gray-400 text-sm">
-                Software Developer | IT Engineer
-              </span>
-            </div>
-          </div>
-          <div className="pl-1 md:hidden flex items-center">
-            <ModeDark />
-            <div className="flex p-1 items-center">
-              <Link href="https://github.com/EriMaldonado" target="_blank">
-                <div className="ml-2 cursor-pointer text-gray-700 hover:text-black dark:text-white dark:hover:text-gray-700 transition-all duration-300">
-                  <FaGithub size={35} aria-label="GitHub" />
-                </div>
-              </Link>
-            </div>
-          </div>
         </div>
+
         <div
-          className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-            menuOpen ? "block" : "hidden"
-          } transition-all duration-300 ease-in-out`}
+          className={`md:hidden ${
+            navbarOpen ? "block" : "hidden"
+          } transition-all duration-300 ease-in-out pb-4`}
         >
-          <ul className="justify-end items-center space-y-8 md:flex md:space-x-10 md:space-y-0">
-            {NavBarItems.map((item, idx) => (
-              <li
-                key={idx}
-                className="text-bold border-b-4 border-transparent hover:border-[#15326F] dark:hover:border-[#ffffff] transition-all duration-300 ease-in-out"
-              >
+          <ul className="flex flex-col space-y-3">
+            {navLinks.map((item, idx) => (
+              <li key={idx}>
                 <Link
                   href={item.path}
-                  className="font-semibold text-gray-900 hover:text-[#15326F] dark:text-white dark:hover:text-[#ffffff] transition-all duration-300 ease-in-out text-xl md:text-xl"
+                  className="block font-semibold text-gray-900 hover:text-primary dark:text-white dark:hover:text-primary transition-all duration-300 ease-in-out py-2 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                  onClick={() => setNavbarOpen(false)}
                 >
                   {item.title}
                 </Link>
               </li>
             ))}
           </ul>
-        </div>
-        <div className="pl-4 md:block hidden">
-          <ModeDark />
+
+          <div className="flex items-center gap-3 mt-4 px-4 pt-4 border-t border-gray-200 dark:border-gray-800">
+            <LanguageToggle />
+            <ModeDark />
+          </div>
         </div>
       </div>
     </nav>

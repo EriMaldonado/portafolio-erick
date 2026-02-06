@@ -1,14 +1,23 @@
+"use client";
 import React from "react";
+import ProjectLayout from "./ProjectLayout";
+import { Project } from "@/lib/constants/projects-data";
 
 interface ProjectCardProps {
-  content: React.ReactNode;
+  project: Project;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ content }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
-    <>
-      <div className=" p-1">{content}</div>
-    </>
+    <div className="h-full w-full flex">
+      <ProjectLayout
+        image={project.image} 
+        title={project.title}
+        technologies={project.technologies}
+        website={project.website}
+        github={project.github}
+      />
+    </div>
   );
 };
 

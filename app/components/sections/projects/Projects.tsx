@@ -1,21 +1,23 @@
 "use client";
 import React, { useState, useRef } from "react";
+import { useTranslation } from "@/lib/i18n";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
 import { motion, useInView } from "framer-motion";
-import ProjectsData from "./ProjectData";
-import GalaxyBackground from "../../GalaxiBackground";
+import { ProjectsData, Project } from "@/lib/constants/projects-data";
+
 const Projects = () => {
   const [tag, setTag] = useState("All");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const { t } = useTranslation();
 
-  const handleTagChange = (newTag: React.SetStateAction<string>) => {
+  const handleTagChange = (newTag: string) => {
     setTag(newTag);
   };
 
-  const filteredProjects = ProjectsData.filter((project) =>
-    project.tag.includes(tag)
+  const filteredProjects = ProjectsData.filter((project: Project) =>
+    tag === "All" ? true : project.tag.includes(tag),
   );
 
   const cardVariants = {
@@ -24,41 +26,43 @@ const Projects = () => {
   };
 
   return (
-    <section
-      className="bg-gradient-to-r light:bg-[#EAB308] min-h-screen pt-20"
-      id="projects"
-    >
-      <h2 className="text-center text-3xl font-bold mb-2">My Projects</h2>
+    <section className="min-h-screen pt-20" id="projects">
+      <h2 className="text-center text-3xl font-bold mb-2 text-foreground">
+        {t.projects.title}
+      </h2>
+
       <div className="flex flex-row rounded-sm justify-center items-center pt-2 gap-4">
         <ProjectTag
-          onClick={handleTagChange}
-          name="All"
+          onClick={() => handleTagChange("All")}
+          name={t.projects.all}
           isSelected={tag === "All"}
         />
         <ProjectTag
-          onClick={handleTagChange}
-          name="Web"
+          onClick={() => handleTagChange("Web")}
+          name={t.projects.web}
           isSelected={tag === "Web"}
         />
         <ProjectTag
-          onClick={handleTagChange}
-          name="Mobile"
+          onClick={() => handleTagChange("Mobile")}
+          name={t.projects.mobile}
           isSelected={tag === "Mobile"}
         />
       </div>
+
       <ul
         ref={ref}
-        className="max-w-7xl w-full p-4 gap-4 items-center justify-around flex-col sm:p-4 sm:justify-center sm:text-center mx-auto my-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
+        className="max-w-7xl w-full p-4 gap-8 items-stretch justify-center mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
       >
-        {filteredProjects.map((project, index) => (
+        {filteredProjects.map((project: Project, index: number) => (
           <motion.li
-            key={index}
+            key={project.id}
             variants={cardVariants}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.3, delay: index * 0.4 }}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
+            className="flex"
           >
-            <ProjectCard key={project.id} content={project.content} />
+            <ProjectCard project={project} />
           </motion.li>
         ))}
       </ul>

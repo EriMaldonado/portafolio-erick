@@ -14,12 +14,12 @@ const ProjectTag: React.FC<ProjectTagProps> = ({
   isSelected,
 }) => {
   const buttonStyles = isSelected
-    ? "bg-[#15326F] hover:bg-[#333333] text-white dark:bg-[#15326F] dark:text-white shadow-lg"
-    : "bg-transparent hover:bg-[#15326F] hover:text-white  border-2  ";
+    ? "bg-[#15326F] text-white border-[#15326F] shadow-xl scale-105"
+    : "bg-transparent text-gray-600 border-gray-300 dark:text-gray-400 dark:border-gray-600 hover:border-[#15326F] hover:text-[#15326F]";
 
   return (
     <button
-      className={`${buttonStyles} font-semibold py-2 px-6 rounded-full transition-all duration-300 ease-in-out text-md cursor-pointer`}
+      className={`${buttonStyles} border-2 font-bold py-2 px-6 rounded-full transition-all duration-300 ease-in-out text-sm md:text-md cursor-pointer active:scale-95`}
       onClick={() => onClick(name)}
     >
       {name}

@@ -1,22 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/app/components/providers/theme-provider";
-import NeuralNetworkMoving from "./components/GalaxiBackground";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { GalaxiBackground, DynamicBody } from "@/app/components/shared";
+import { MainProvider } from "@/providers";
+import { siteConfig } from "@/config";
 
 export const metadata: Metadata = {
-  title: "Erick Maldonado - Portfolio",
-  description: "Personal portfolio of Erick Maldonado",
+  title: siteConfig.title,
+  description: siteConfig.description,
 };
 
 export default function RootLayout({
@@ -26,18 +16,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <div className="fixed inset-0 -z-10">
-          <NeuralNetworkMoving darkMode={false} />
-        </div>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+      <body>
+        <DynamicBody>
+          <MainProvider>
+            <div className="fixed inset-0 -z-10">
+              <GalaxiBackground />
+            </div>
+            {children}
+          </MainProvider>
+        </DynamicBody>
       </body>
     </html>
   );

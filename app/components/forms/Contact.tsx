@@ -1,60 +1,69 @@
 "use client";
 import { useState } from "react";
 import { useRef } from "react";
+import { useTranslation } from "@/lib/i18n";
 import emailjs from "@emailjs/browser";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import SuccessMessage from "./SuccessMessage";
 import Image from "next/image";
+import { Button } from "@/app/components/ui/button";
 
 function ContactSection() {
   const form = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<{ success?: boolean; message?: string }>(
-    {}
+    {},
   );
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { t } = useTranslation();
 
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (
-      !process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ||
-      !process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ||
-      !process.env.NEXT_PUBLIC_EMAILJS_USER_ID
-    ) {
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
+    
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("Faltan variables de entorno de EmailJS");
+      setStatus({
+        success: false,
+        message: "Error de configuración interna.",
+      });
       return;
     }
 
-    emailjs
-      .sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+    setIsLoading(true);
+    setStatus({});
+
+    try {
+      const result = await emailjs.sendForm(
+        serviceId,
+        templateId,
         form.current!,
-        process.env.NEXT_PUBLIC_EMAILJS_USER_ID
-      )
-      .then(
-        (result) => {
-          setStatus({ success: true, message: "Mensaje enviado con éxito" });
-          setShowSuccessMessage(true);
-        },
-        (error) => {
-          setStatus({
-            success: false,
-            message:
-              "Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.",
-          });
-          if (error?.text) {
-            console.error("Detalles del error:", error.text);
-          } else {
-            console.error("Error desconocido:", error);
-          }
-        }
+        publicKey,
       );
 
-    e.currentTarget.reset();
+      console.log("Éxito:", result.text);
+      setStatus({ success: true, message: t.contact.successMessage });
+      setShowSuccessMessage(true);
+      form.current?.reset();
+
+      setTimeout(() => setShowSuccessMessage(false), 5000);
+    } catch (error: any) {
+      console.error("Error detallado de EmailJS:", error);
+      setStatus({
+        success: false,
+        message: error?.text || "Error al enviar. Intenta de nuevo.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <div className="min-h-screen pb-12 bg-[#e9e8e4]/90 dark:bg-gradient-to-br dark:from-[#121212] dark:to-[#1f2937]">
+    <div className="min-h-screen pb-12">
       <section
         id="contact"
         className="max-w-6xl w-full p-4 gap-2 items-center justify-center flex-col sm:p-4 mx-auto"
@@ -62,59 +71,117 @@ function ContactSection() {
         <div className="container pt-20 mx-auto">
           <div className="lg:flex lg:items-center lg:-mx-2">
             <div className="lg:w-1/2 lg:mx-10 text-center lg:text-left">
-              <h1 className="text-3xl font-bold dark:text-white">
-                Let's Connect
-              </h1>
-              <p className="text-xl mt-2 font-semibold dark:text-gray-400">
-                I am looking for new opportunities. My inbox is always open, so
-                feel free to contact me if you have any questions.
+              <h2 className="text-3xl font-bold mb-2 text-foreground">
+                {t.contact.title}
+              </h2>
+              <p className="text-xl mt-2 font-medium text-muted-foreground">
+                {t.contact.subtitle}
               </p>
 
               <form ref={form} onSubmit={sendEmail} className="mt-4">
                 <div className="flex flex-col space-y-4">
                   <div className="flex-1">
-                    <label className="flex justify-start text-md font-semibold dark:text-gray-200">
-                      Name
+                    <label className="flex justify-start text-md font-semibold text-foreground">
+                      {t.contact.namePlaceholder}
                     </label>
                     <input
                       type="text"
-                      placeholder="Erick"
+                      placeholder={t.contact.namePlaceholder}
                       name="user_name"
-                      className="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-[#1F2937] dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                      required
+                      className="block w-full px-4 py-3 mt-1 text-foreground bg-card border-2 border-border rounded-xl focus:border-primary focus:ring-primary focus:ring-opacity-40 focus:outline-none focus:ring transition-all"
                     />
                   </div>
 
                   <div className="flex-1">
-                    <label className="flex justify-start text-md font-semibold dark:text-gray-200">
-                      Email address
+                    <label className="flex justify-start text-md font-semibold text-foreground">
+                      {t.contact.emailPlaceholder}
                     </label>
                     <input
                       type="email"
-                      placeholder="erickgabrielmaldonado1@gmail.com"
+                      placeholder={t.contact.emailPlaceholder}
                       name="user_email"
-                      className="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-[#1F2937] dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                      required
+                      className="block w-full px-4 py-3 mt-1 text-foreground bg-card border-2 border-border rounded-xl focus:border-primary focus:ring-primary focus:ring-opacity-40 focus:outline-none focus:ring transition-all"
                     />
                   </div>
 
                   <div className="w-full">
-                    <label className="flex justify-start text-md font-semibold dark:text-gray-200">
-                      Message
+                    <label className="flex justify-start text-md font-semibold text-foreground">
+                      {t.contact.messagePlaceholder}
                     </label>
                     <textarea
-                      className="block w-full min-h-[64px] max-h-[96px] px-4 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 dark:bg-[#1F2937] dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring resize-none"
+                      className="block w-full min-h-[64px] max-h-[96px] px-4 py-3 mt-2 text-foreground placeholder-muted-foreground bg-card border-2 border-border rounded-xl md:h-48 focus:border-primary focus:ring-primary focus:ring-opacity-40 focus:outline-none focus:ring resize-none transition-all"
                       name="message"
-                      placeholder="Message"
+                      placeholder={t.contact.messagePlaceholder}
+                      required
                     ></textarea>
                   </div>
                   <div className="pt-2 flex flex-col items-start">
-                    <button
+                    <Button
+                      variant="hero"
                       type="submit"
-                      className="text-xl rounded-xl transition duration-300 bg-[#1f2937] text-white hover:bg-[#333333] dark:bg-black dark:hover:bg-[#333333] dark:text-white hover:text-white p-2 pl-4 pr-4 sm:w-auto"
+                      disabled={isLoading}
+                      className="w-full sm:w-auto p-3"
                     >
-                      Get in touch
-                    </button>
-                    <div className="pt-1">
+                      {isLoading ? (
+                        <span className="flex items-center gap-2">
+                          <svg
+                            className="animate-spin h-5 w-5"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
+                          </svg>
+                          Enviando...
+                        </span>
+                      ) : (
+                        t.contact.sendButton
+                      )}
+                    </Button>
+                    <div className="pt-1 w-full">
                       {showSuccessMessage && <SuccessMessage />}
+                      {status.success === false && status.message && (
+                        <div className="mt-4 px-4 py-3 rounded-md border-l-4 border-red-500 bg-red-50">
+                          <div className="flex">
+                            <div>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-6 w-6 text-red-500"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                  clipRule="evenodd"
+                                />
+                              </svg>
+                            </div>
+                            <div className="ml-3">
+                              <span className="text-red-600 font-semibold">
+                                Error
+                              </span>
+                              <p className="text-red-600 mt-1">
+                                {status.message}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -123,22 +190,22 @@ function ContactSection() {
 
             <div className="mt-6 lg:flex lg:mt-0 lg:flex-col lg:items-center lg:w-1/2 lg:mx-10 text-center">
               <Image
-                className="object-contain mx-auto border-2 rounded-full lg:block w-64 h-64"
-                src="/contact.svg"
-                alt="image"
-                width={54}
-                height={54}
+                className="object-contain mx-auto border-2 border-border rounded-full lg:block w-64 h-64"
+                src="/svg/contact.svg"
+                alt="Contact illustration"
+                width={256}
+                height={256}
               />
-              <div className="mt-8 space-y-4 ">
+              <div className="mt-8 space-y-4">
                 <a
                   href="mailto:erickgabrielmaldonado1@gmail.com"
-                  className="flex items-center justify-center mx-2"
+                  className="flex items-center justify-center mx-2 hover:text-primary transition-colors"
                 >
                   <MdEmail
                     size={30}
-                    className="text-[#15326F] transition-colors duration-300 dark:text-gray-300 hover:text-black dark:hover:text-blue-400"
+                    className="text-primary transition-colors duration-300"
                   />
-                  <span className="mx-2 text-gray-700 text-md truncate dark:text-gray-400 ">
+                  <span className="mx-2 text-foreground text-md truncate">
                     erickgabrielmaldonado1@gmail.com
                   </span>
                 </a>
@@ -146,13 +213,13 @@ function ContactSection() {
                 <a
                   href="https://wa.me/593969816247?text=Hola%2C%20me%20interesa%20tu%20perfil.."
                   target="_blank"
-                  className="flex items-center justify-center mx-2"
+                  className="flex items-center justify-center mx-2 hover:text-primary transition-colors"
                 >
                   <FaWhatsapp
                     size={30}
-                    className="text-[#15326F] transition-colors duration-300 dark:text-gray-300 hover:text-black dark:hover:text-blue-400"
+                    className="text-primary transition-colors duration-300"
                   />
-                  <span className="mx-2 text-gray-700 text-md truncate dark:text-gray-400">
+                  <span className="mx-2 text-foreground text-md truncate">
                     (+593) 969816247
                   </span>
                 </a>
@@ -162,7 +229,7 @@ function ContactSection() {
                 <a
                   href="https://www.linkedin.com/in/erickmaldonado1"
                   target="_blank"
-                  className="text-[#15326F] transition-colors duration-300 dark:text-gray-300 hover:text-black dark:hover:text-blue-400"
+                  className="text-primary transition-all duration-300 hover:text-primary/80 hover:-translate-y-1"
                   aria-label="LinkedIn"
                 >
                   <FaLinkedin size={30} />
@@ -170,7 +237,7 @@ function ContactSection() {
                 <a
                   href="https://github.com/EriMaldonado"
                   target="_blank"
-                  className="text-[#15326F] transition-colors duration-300 dark:text-gray-300 hover:text-black dark:hover:text-blue-400"
+                  className="text-primary transition-all duration-300 hover:text-primary/80 hover:-translate-y-1"
                   aria-label="GitHub"
                 >
                   <FaGithub size={30} />
